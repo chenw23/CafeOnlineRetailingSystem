@@ -72,7 +72,7 @@ public class OrderItem implements Serializable {
                 }
                 break;
             default:
-                throw new RuntimeException("Tea size error");
+                throw new RuntimeException("Drink size error");
         }
         return cupPrice;
 
