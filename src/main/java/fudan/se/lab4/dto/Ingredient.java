@@ -13,7 +13,6 @@ public class Ingredient implements Serializable {
     }
 
     public Ingredient() {
-
     }
 
     public String getName() {
