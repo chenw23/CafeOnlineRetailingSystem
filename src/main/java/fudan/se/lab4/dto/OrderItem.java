@@ -1,5 +1,8 @@
 package fudan.se.lab4.dto;
 
+import fudan.se.lab4.entity.drinkEntity.Coffee;
+import fudan.se.lab4.entity.drinkEntity.Tea;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,9 +12,10 @@ public class OrderItem implements Serializable {
     private String name;
     private int size;
     private List<Ingredient> ingredients;
+    private double price;
 
-    public OrderItem(String name, List<Ingredient> ingredients, int size) {
-        this.name = name;
+    public OrderItem(List<Ingredient> ingredients, int size) {
+        this.name = this.getClass().getName();
         this.ingredients = ingredients;
         this.size = size;
     }
@@ -42,4 +46,42 @@ public class OrderItem implements Serializable {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    private double size2price(int size){
+        int cupPrice = 0;
+        switch(size){
+            case 1:
+                cupPrice = 2;
+                break;
+            case 2:
+                cupPrice = 4;
+                break;
+            case 3:
+                if(this instanceof Coffee){
+                    cupPrice = 6;
+                }else if(this instanceof Tea){
+                    cupPrice = 5;
+                }
+                break;
+            default:
+                throw new RuntimeException("Tea size error");
+        }
+        return cupPrice;
+
+    }
+
+    public double cost(){
+        double drinkPrice;
+        drinkPrice = getPrice() + size2price(getSize());
+        return drinkPrice;
+    }
+
 }
