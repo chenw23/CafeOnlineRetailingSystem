@@ -1,17 +1,19 @@
 package fudan.se.lab4.service.impl;
-
-
 import fudan.se.lab4.dto.Order;
 import fudan.se.lab4.dto.OrderItem;
 import fudan.se.lab4.dto.PaymentInfo;
 import fudan.se.lab4.service.OrderService;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 @Service
 public class OrderServiceImpl implements OrderService {
+    /**
+     *
+     * @param order the order contains the items purchased
+     * @return the payment information
+     */
     @Override
     public PaymentInfo pay(Order order) {
         double totalPrice = order.getTotalPrice();
@@ -34,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     /**
-     * @param order
+     * @param order the order contains the items purchased
      * @return the total discount of the combination
      */
     private double combination(Order order,ArrayList<String> msgs) {
@@ -43,9 +45,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
     /**
+     * Twenty percent off for every two cups of large espresso
      * @param order
      * @return the discount for Espresso
-     * Twenty percent off for every two cups of large espresso
      */
     private double discountOfLargeEspresso(Order order,ArrayList<String> msgs) {
         //大杯Espresso, 2杯8折
@@ -66,9 +68,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
     /**
-     * @param order
-     * @return the discount for tea
      * buy 3 get 1 for free
+     * @param order the order contains the items purchased
+     * @return the discount for tea
      */
     private double discountOfTea(Order order,ArrayList<String> msgs) {
         //Tea 买3送1
@@ -90,9 +92,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
     /**
-     * @param order
-     * @return the discount for Cappuccino
      * The second cup is half price
+     * @param order the order contains the items purchased
+     * @return the discount for Cappuccino
      */
     private double discountOfCappuccino(Order order,ArrayList<String> msgs) {
         //Cappuccino 第二杯半价
@@ -109,7 +111,11 @@ public class OrderServiceImpl implements OrderService {
         return discount;
     }
 
-
+    /**
+     *
+     * @param totalPrice the totalPrice of an order
+     * @return the discount under the full reduction promotion
+     */
     private double fullReduction(double totalPrice) {
         return (totalPrice / 100) * 30;
     }
