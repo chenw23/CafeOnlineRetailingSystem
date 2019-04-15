@@ -14,26 +14,24 @@ public class OrderServiceImpl implements OrderService {
         double totalPrice = order.getTotalPrice();
 
 
-
         double discount1 = combination(order);
         double discount2 = fullReduction(totalPrice);
-        double discount =  discount1>discount2?discount1: discount2;
+        double discount = discount1 > discount2 ? discount1 : discount2;
 
         return new PaymentInfo(totalPrice, discount,
-                totalPrice- discount, null);
+                totalPrice - discount, null);
     }
+
     /**
-     *
      * @param order
      * @return the total discount of the combination
      */
-    private double combination(Order order){
-        return discountOfLargeEspresso(order)+discountOfTea(order)
-                +discountOfCappuccino(order);
+    private double combination(Order order) {
+        return discountOfLargeEspresso(order) + discountOfTea(order)
+                + discountOfCappuccino(order);
     }
 
     /**
-     *
      * @param order
      * @return the discount for Espresso
      * Twenty percent off for every two cups of large espresso
@@ -46,52 +44,51 @@ public class OrderServiceImpl implements OrderService {
                 count++;
             }
         }
-        return (count / 2) * 8.0; //(countEspresso/2)*0.2*20*2;
+        count = count / 2;
+        return count * 8.0; //(countEspresso/2)*0.2*20*2;
 
     }
 
     /**
-     *
      * @param order
      * @return the discount for tea
      * buy 3 get 1 for free
      */
-    private double discountOfTea(Order order){
+    private double discountOfTea(Order order) {
         //Tea 买3送1
         int countGreenTea = 0;
         int countReaTea = 0;
         for (OrderItem orderItem : order.getOrderItems()) {
-            if (orderItem.getName().equals("GreenTea")){
+            if (orderItem.getName().equals("GreenTea")) {
                 countGreenTea++;
             }
-            if (orderItem.getName().equals("RedTea")){
+            if (orderItem.getName().equals("RedTea")) {
                 countReaTea++;
             }
         }
-        int freeNumber = (countGreenTea+countReaTea)/4;
-        return freeNumber>countReaTea? (countReaTea*18+(freeNumber-countReaTea)*16) :countReaTea*18;
+        int freeNumber = (countGreenTea + countReaTea) / 4;
+        return freeNumber > countReaTea ? (countReaTea * 18 + (freeNumber - countReaTea) * 16) : countReaTea * 18;
     }
 
     /**
-     *
      * @param order
      * @return the discount for Cappuccino
      * The second cup is half price
      */
-    private double discountOfCappuccino(Order order){
+    private double discountOfCappuccino(Order order) {
         //Cappuccino 第二杯半价
         int countCappuccino = 0;
         for (OrderItem orderItem : order.getOrderItems()) {
-            if (orderItem.getName().equals("Cappuccino")){
+            if (orderItem.getName().equals("Cappuccino")) {
                 countCappuccino++;
             }
         }
-        return (countCappuccino/2)*11.0;
-
+        countCappuccino = countCappuccino / 2;
+        return countCappuccino * 11.0;
     }
 
 
-    private double fullReduction(double totalPrice){
-        return (totalPrice/100)*30;
+    private double fullReduction(double totalPrice) {
+        return (totalPrice / 100) * 30;
     }
 }
