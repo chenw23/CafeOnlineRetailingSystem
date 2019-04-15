@@ -35,10 +35,10 @@ public class Order implements Serializable {
 
     public double getTotalPrice(){
         double totalPrice = 0;
-        for (OrderItem orderItem : this.getOrderItems()) {
+        for (OrderItem orderItem : orderItems) {
             totalPrice += orderItem.cost();
             for (Ingredient ingredient : orderItem.getIngredients()) {
-                totalPrice += 0;
+                totalPrice += ingredient.price;
             }
         }
         return totalPrice;
