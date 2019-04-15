@@ -46,7 +46,7 @@ public class OrderServiceImpl implements OrderService {
                 count++;
             }
         }
-        return (count / 2) * 8; //(countEspresso/2)*0.2*20*2;
+        return (count / 2) * 8.0; //(countEspresso/2)*0.2*20*2;
 
     }
 
@@ -86,7 +86,7 @@ public class OrderServiceImpl implements OrderService {
                 countCappuccino++;
             }
         }
-        return (countCappuccino/2)*11;
+        return (countCappuccino/2)*11.0;
 
     }
 
