@@ -32,4 +32,15 @@ public class Order implements Serializable {
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
+
+    public double getTotalPrice(){
+        double totalPrice = 0;
+        for (OrderItem orderItem : this.getOrderItems()) {
+            totalPrice += orderItem.cost();
+            for (Ingredient ingredient : orderItem.getIngredients()) {
+                totalPrice += 0;
+            }
+        }
+        return totalPrice;
+    }
 }
