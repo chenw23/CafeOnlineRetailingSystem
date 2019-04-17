@@ -16,7 +16,7 @@ public abstract class OrderItem implements Serializable {
     private double price;
 
     public OrderItem(List<Ingredient> ingredients, int size) {
-        this.name = this.getClass().getName();
+        this.name = this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1);
         this.ingredients = ingredients;
         this.size = size;
     }

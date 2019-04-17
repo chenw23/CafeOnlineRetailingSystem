@@ -29,14 +29,13 @@ public abstract class Ingredient implements Serializable {
     protected double price;
 
     public Ingredient(int number) {
-        this.name = this.getClass().getName();
         this.number = number;
     }
 
     public Ingredient() {
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 

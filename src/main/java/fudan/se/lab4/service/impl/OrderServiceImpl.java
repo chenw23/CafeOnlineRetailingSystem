@@ -1,4 +1,5 @@
 package fudan.se.lab4.service.impl;
+import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.dto.Order;
 import fudan.se.lab4.dto.OrderItem;
 import fudan.se.lab4.dto.PaymentInfo;
@@ -28,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
         else {
             discount = discount2;
             msgs.clear();
-            msgs.add(String.format("所有商品满100$省30$,折扣 %f",discount2));
+            msgs.add(String.format(InfoConstant.DISCOUNT_FULL_REDUCTION,discount2));
         }
 
         return new PaymentInfo(totalPrice, discount,
@@ -39,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
      * @param order the order contains the items purchased
      * @return the total discount of the combination
      */
-    private double combination(Order order,ArrayList<String> msgs) {
+    double combination(Order order,ArrayList<String> msgs) {
         return discountOfLargeEspresso(order,msgs) + discountOfTea(order,msgs)
                 + discountOfCappuccino(order,msgs);
     }
@@ -49,18 +50,18 @@ public class OrderServiceImpl implements OrderService {
      * @param order
      * @return the discount for Espresso
      */
-    private double discountOfLargeEspresso(Order order,ArrayList<String> msgs) {
+    double discountOfLargeEspresso(Order order,ArrayList<String> msgs) {
         //大杯Espresso, 2杯8折
         int count = 0;
         for (OrderItem orderItem : order.getOrderItems()) {
-            if (orderItem.getName().equals("Espresso") && orderItem.getSize() == 3) {
+            if (orderItem.getName().equals(InfoConstant.NAME_ESPRESSO) && orderItem.getSize() == 3) {
                 count++;
             }
         }
         count = count / 2;
         int discount = count * 8;//(countEspresso/2)*0.2*20*2;
         if (count!=0)
-            msgs.add(String.format("大杯Espresso 2杯8折，折扣 %d$", discount));
+            msgs.add(String.format(InfoConstant.DISCOUNT_ESPRESSO, discount));
         return discount;
 
 
@@ -72,22 +73,22 @@ public class OrderServiceImpl implements OrderService {
      * @param order the order contains the items purchased
      * @return the discount for tea
      */
-    private double discountOfTea(Order order,ArrayList<String> msgs) {
+    double discountOfTea(Order order,ArrayList<String> msgs) {
         //Tea 买3送1
         int countGreenTea = 0;
         int countReaTea = 0;
         for (OrderItem orderItem : order.getOrderItems()) {
-            if (orderItem.getName().equals("GreenTea")) {
+            if (orderItem.getName().equals(InfoConstant.NAME_GREENTEA)) {
                 countGreenTea++;
             }
-            if (orderItem.getName().equals("RedTea")) {
+            if (orderItem.getName().equals(InfoConstant.NAME_REDTEA)) {
                 countReaTea++;
             }
         }
         int freeNumber = (countGreenTea + countReaTea) / 4;
-        int discount = freeNumber > countReaTea ? (countReaTea * 18 + (freeNumber - countReaTea) * 16) : countReaTea * 18;
+        int discount = freeNumber > countReaTea ? (countReaTea * 18 + (freeNumber - countReaTea) * 16) : freeNumber * 18;
         if (freeNumber!=0)
-            msgs.add(String.format("Tea 买3送1，折扣 %d$", discount));
+            msgs.add(String.format(InfoConstant.DISCOUNT_TEA, discount));
         return discount;
     }
 
@@ -96,18 +97,18 @@ public class OrderServiceImpl implements OrderService {
      * @param order the order contains the items purchased
      * @return the discount for Cappuccino
      */
-    private double discountOfCappuccino(Order order,ArrayList<String> msgs) {
+    double discountOfCappuccino(Order order,ArrayList<String> msgs) {
         //Cappuccino 第二杯半价
         int countCappuccino = 0;
         for (OrderItem orderItem : order.getOrderItems()) {
-            if (orderItem.getName().equals("Cappuccino")) {
+            if (orderItem.getName().equals(InfoConstant.NAME_CAPPUCCINO)) {
                 countCappuccino++;
             }
         }
         countCappuccino = countCappuccino / 2;
         int discount =  countCappuccino * 11;
         if (countCappuccino!=0)
-            msgs.add(String.format("Cappuccino 第二杯半价，折扣 %d$", discount));
+            msgs.add(String.format(InfoConstant.DISCOUNT_CAPPUCCINO, discount));
         return discount;
     }
 
@@ -116,7 +117,7 @@ public class OrderServiceImpl implements OrderService {
      * @param totalPrice the totalPrice of an order
      * @return the discount under the full reduction promotion
      */
-    private double fullReduction(double totalPrice) {
-        return (totalPrice / 100) * 30;
+    double fullReduction(double totalPrice) {
+        return ((int)(totalPrice) / 100) * 30;
     }
 }
