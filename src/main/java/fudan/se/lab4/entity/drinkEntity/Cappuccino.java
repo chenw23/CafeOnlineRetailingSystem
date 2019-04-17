@@ -10,6 +10,7 @@ public class Cappuccino extends Coffee {
         setPrice(22);
         setName(InfoConstant.NAME_CAPPUCCINO);
     }
+
     public Cappuccino(List<Ingredient> ingredients, int size) {
         super(ingredients,size);
         setPrice(22);
