@@ -6,6 +6,7 @@ import fudan.se.lab4.dto.PaymentInfo;
 import fudan.se.lab4.service.OrderService;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -52,12 +53,10 @@ public class OrderServiceImpl implements OrderService {
      */
     double discountOfLargeEspresso(Order order,ArrayList<String> msgs) {
         //大杯Espresso, 2杯8折
-        int count = 0;
-        for (OrderItem orderItem : order.getOrderItems()) {
-            if (orderItem.getName().equals(InfoConstant.NAME_ESPRESSO) && orderItem.getSize() == 3) {
-                count++;
-            }
-        }
+        int count = (int)order.getOrderItems().stream()
+                .filter(orderItem -> orderItem.getName().equals(InfoConstant.NAME_ESPRESSO) && orderItem.getSize() == 3)
+                .count();
+
         count = count / 2;
         int discount = count * 8;//(countEspresso/2)*0.2*20*2;
         if (count!=0)
@@ -75,16 +74,14 @@ public class OrderServiceImpl implements OrderService {
      */
     double discountOfTea(Order order,ArrayList<String> msgs) {
         //Tea 买3送1
-        int countGreenTea = 0;
-        int countReaTea = 0;
-        for (OrderItem orderItem : order.getOrderItems()) {
-            if (orderItem.getName().equals(InfoConstant.NAME_GREENTEA)) {
-                countGreenTea++;
-            }
-            if (orderItem.getName().equals(InfoConstant.NAME_REDTEA)) {
-                countReaTea++;
-            }
-        }
+        int countGreenTea = (int)order.getOrderItems().stream()
+                .filter(orderItem -> orderItem.getName().equals(InfoConstant.NAME_GREENTEA))
+                .count();
+
+        int countReaTea = (int)order.getOrderItems().stream()
+                .filter(orderItem -> orderItem.getName().equals(InfoConstant.NAME_REDTEA))
+                .count();
+
         int freeNumber = (countGreenTea + countReaTea) / 4;
         int discount = freeNumber > countReaTea ? (countReaTea * 18 + (freeNumber - countReaTea) * 16) : freeNumber * 18;
         if (freeNumber!=0)
@@ -99,12 +96,10 @@ public class OrderServiceImpl implements OrderService {
      */
     double discountOfCappuccino(Order order,ArrayList<String> msgs) {
         //Cappuccino 第二杯半价
-        int countCappuccino = 0;
-        for (OrderItem orderItem : order.getOrderItems()) {
-            if (orderItem.getName().equals(InfoConstant.NAME_CAPPUCCINO)) {
-                countCappuccino++;
-            }
-        }
+        int countCappuccino = (int)order.getOrderItems().stream()
+                .filter(orderItem -> orderItem.getName().equals(InfoConstant.NAME_CAPPUCCINO))
+                .count();
+
         countCappuccino = countCappuccino / 2;
         int discount =  countCappuccino * 11;
         if (countCappuccino!=0)

@@ -36,15 +36,18 @@ public class Order implements Serializable {
     }
 
     public double getTotalPrice(){
+
         assert orderItems != null: InfoConstant.ORDER_ITEMS_NULL;
-        double totalPrice = 0;
-        for (OrderItem orderItem : orderItems) {
-            totalPrice += orderItem.cost();
+        double totalPrice;
+
+        totalPrice = orderItems.stream().map(orderItem -> {
             assert orderItem.getIngredients() != null:InfoConstant.INGREDIENT_NULL;
-            for (Ingredient ingredient : orderItem.getIngredients()) {
-                totalPrice += ingredient.getPrice() * ingredient.getNumber();
-            }
-        }
+            return  orderItem.cost() + orderItem.getIngredients().stream()
+                    .map(ingredient -> ingredient.getPrice() * ingredient.getNumber())
+                    .mapToDouble(Double::doubleValue)
+                    .sum();
+        }).mapToDouble(Double::doubleValue).sum();
+
         return totalPrice;
     }
 }
