@@ -6,7 +6,7 @@ import fudan.se.lab4.dto.Ingredient;
 public class Chocolate extends Ingredient {
     public Chocolate(int number){
         super(number);
-        price = 1.2;
+        setPrice(1.2);
         setName(InfoConstant.NAME_CHOCOLATE);
     }
 }
