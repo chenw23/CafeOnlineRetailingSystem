@@ -26,7 +26,7 @@ public abstract class Ingredient implements Serializable {
 
     //add price for ingredient
     //unit: $
-    protected double price;
+    private double price;
 
     public Ingredient(int number) {
         this.number = number;
