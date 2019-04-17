@@ -11,14 +11,22 @@ import java.io.Serializable;
  * The dto package defines the classes prototypes that will be used to transmit data between the front end and the back end.
  * Therefore, any concrete classes should created in this section should not lie in the dto package
  */
-public class Ingredient implements Serializable {
+public abstract class Ingredient implements Serializable {
     private static final long serialVersionUID = 7600387145905184435L;
     private String name;
     private int number;
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     //add price for ingredient
     //unit: $
-    protected static double price;
+    protected double price;
 
     public Ingredient(int number) {
         this.name = this.getClass().getName();
@@ -43,5 +51,6 @@ public class Ingredient implements Serializable {
     public void setNumber(int number) {
         this.number = number;
     }
+
 
 }

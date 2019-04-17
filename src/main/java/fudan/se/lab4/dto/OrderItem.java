@@ -1,12 +1,13 @@
 package fudan.se.lab4.dto;
 
+import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.entity.drinkEntity.Coffee;
 import fudan.se.lab4.entity.drinkEntity.Tea;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class OrderItem implements Serializable {
+public abstract class OrderItem implements Serializable {
     private static final long serialVersionUID = -2451304424331432011L;
 
     private String name;
@@ -72,7 +73,7 @@ public class OrderItem implements Serializable {
                 }
                 break;
             default:
-                throw new RuntimeException("Drink size error");
+                throw new RuntimeException(InfoConstant.CUP_SIZE_ERROR);
         }
         return cupPrice;
 
