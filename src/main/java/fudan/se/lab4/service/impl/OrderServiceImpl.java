@@ -118,6 +118,6 @@ public class OrderServiceImpl implements OrderService {
      * @return the discount under the full reduction promotion
      */
     double fullReduction(double totalPrice) {
-        return ((int)(totalPrice) / 100) * 30;
+        return ((int)(totalPrice) / 100) * 30.0;
     }
 }
