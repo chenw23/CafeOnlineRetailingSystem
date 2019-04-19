@@ -10,8 +10,9 @@ public class GreenTea extends Tea {
         setPrice(16);
         setName(InfoConstant.NAME_GREENTEA);
     }
+
     public GreenTea(List<Ingredient> ingredients, int size) {
-        super(ingredients,size);
+        super(ingredients, size);
         setPrice(16);
         setName(InfoConstant.NAME_GREENTEA);
     }

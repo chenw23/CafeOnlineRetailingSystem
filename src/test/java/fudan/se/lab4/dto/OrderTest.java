@@ -3,17 +3,16 @@ package fudan.se.lab4.dto;
 import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.entity.drinkEntity.Cappuccino;
 import fudan.se.lab4.entity.drinkEntity.Espresso;
-import fudan.se.lab4.entity.ingredientEntity.Chocolate;
-import fudan.se.lab4.entity.ingredientEntity.Milk;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * @Author: jiaxing liu
- * @Date: 2019/4/17 10:06
+ * Date: 2019/4/17 10:06
+ *
+ * @author jiaxing liu
  */
 public class OrderTest {
 
@@ -25,7 +24,7 @@ public class OrderTest {
         Order order = getOrder(null);
         try {
             order.getTotalPrice();
-        }catch (AssertionError e){
+        } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.ORDER_ITEMS_NULL);
         }
     }
@@ -36,11 +35,11 @@ public class OrderTest {
     @Test
     public void testGetTotalPriceWithIngredientNull() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new Cappuccino(null,2));
+        orderItems.add(new Cappuccino(null, 2));
         Order order = getOrder(orderItems);
         try {
             order.getTotalPrice();
-        }catch (AssertionError e){
+        } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.INGREDIENT_NULL);
         }
     }
@@ -52,10 +51,10 @@ public class OrderTest {
     public void testGetTotalPriceOK() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         ArrayList<Ingredient> ingredients = new ArrayList<>();
-        ingredients.add(new Chocolate(2));
-        orderItems.add(new Cappuccino(ingredients,2));
+        ingredients.add(new Ingredient(InfoConstant.NAME_CHOCOLATE, 2));
+        orderItems.add(new Cappuccino(ingredients, 2));
         Order order = getOrder(orderItems);
-        assertEquals(order.getTotalPrice(),28.4,0.01);
+        assertEquals(order.getTotalPrice(), 28.4, 0.01);
     }
 
     /**
@@ -66,25 +65,25 @@ public class OrderTest {
     public void testGetTotalPriceWithSizeError() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         ArrayList<Ingredient> ingredients = new ArrayList<>();
-        ingredients.add(new Milk(2));
-        orderItems.add(new Espresso(ingredients,4));
+        ingredients.add(new Ingredient(InfoConstant.NAME_MILK, 2));
+        orderItems.add(new Espresso(ingredients, 4));
         Order order = getOrder(orderItems);
         try {
             order.getTotalPrice();
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             assertEquals(e.getMessage(), InfoConstant.CUP_SIZE_ERROR);
         }
     }
 
-
     /**
      * a helpful method to get a new order with
      * a random ID.
+     *
      * @param orderItems
      * @return
      */
-    private Order getOrder(ArrayList<OrderItem> orderItems){
-        String orderID = "ID" + (int)(Math.random() * 10000);
-        return new Order(orderID,orderItems);
+    private Order getOrder(ArrayList<OrderItem> orderItems) {
+        String orderID = "ID" + (int) (Math.random() * 10000);
+        return new Order(orderID, orderItems);
     }
 }

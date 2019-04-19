@@ -1,6 +1,10 @@
 package fudan.se.lab4.dto;
 
+import fudan.se.lab4.constant.InfoConstant;
+
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Each class you implement should represent an ingredient;
@@ -11,31 +15,37 @@ import java.io.Serializable;
  * The dto package defines the classes prototypes that will be used to transmit data between the front end and the back end.
  * Therefore, any concrete classes should created in this section should not lie in the dto package
  */
-public abstract class Ingredient implements Serializable {
+public class Ingredient implements Serializable {
     private static final long serialVersionUID = 7600387145905184435L;
     private String name;
     private int number;
+    private static Map<String, Double> price;
 
-    public double getPrice() {
-        return price;
+    static {
+        price = new HashMap<>();
+        price.put(InfoConstant.NAME_MILK, 1.2);
+        price.put(InfoConstant.NAME_SUGAR, 1.2);
+        price.put(InfoConstant.NAME_CREAM, 1.0);
+        price.put(InfoConstant.NAME_CHOCOLATE, 1.2);
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public Ingredient(String name, int number) {
+        this.name = name;
+        this.number = number;
     }
+
 
     //add price for ingredient
     //unit: $
-    private double price;
 
-    public Ingredient(int number) {
-        this.number = number;
+    double getPrice() {
+        return price.get(this.name);
     }
 
     public Ingredient() {
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
@@ -50,6 +60,4 @@ public abstract class Ingredient implements Serializable {
     public void setNumber(int number) {
         this.number = number;
     }
-
-
 }

@@ -16,7 +16,6 @@ public abstract class OrderItem implements Serializable {
     private double price;
 
     public OrderItem(List<Ingredient> ingredients, int size) {
-        this.name = this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1);
         this.ingredients = ingredients;
         this.size = size;
     }
@@ -48,7 +47,7 @@ public abstract class OrderItem implements Serializable {
         this.size = size;
     }
 
-    public double getPrice() {
+    private double getPrice() {
         return price;
     }
 
@@ -56,9 +55,9 @@ public abstract class OrderItem implements Serializable {
         this.price = price;
     }
 
-    private double size2price(int size){
+    private double size2price(int size) {
         int cupPrice = 0;
-        switch(size){
+        switch (size) {
             case 1:
                 cupPrice = 2;
                 break;
@@ -66,9 +65,9 @@ public abstract class OrderItem implements Serializable {
                 cupPrice = 4;
                 break;
             case 3:
-                if(this instanceof Coffee){
+                if (this instanceof Coffee) {
                     cupPrice = 6;
-                }else if(this instanceof Tea){
+                } else if (this instanceof Tea) {
                     cupPrice = 5;
                 }
                 break;
@@ -76,13 +75,11 @@ public abstract class OrderItem implements Serializable {
                 throw new RuntimeException(InfoConstant.CUP_SIZE_ERROR);
         }
         return cupPrice;
-
     }
 
-    public double cost(){
+    double cost() {
         double drinkPrice;
         drinkPrice = getPrice() + size2price(getSize());
         return drinkPrice;
     }
-
 }

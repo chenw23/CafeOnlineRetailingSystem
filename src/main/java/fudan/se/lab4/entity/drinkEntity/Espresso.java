@@ -10,8 +10,9 @@ public class Espresso extends Coffee {
         setPrice(20);
         setName(InfoConstant.NAME_ESPRESSO);
     }
+
     public Espresso(List<Ingredient> ingredients, int size) {
-        super(ingredients,size);
+        super(ingredients, size);
         setPrice(20);
         setName(InfoConstant.NAME_ESPRESSO);
     }
