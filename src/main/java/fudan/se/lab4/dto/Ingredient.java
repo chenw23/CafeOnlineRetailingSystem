@@ -3,6 +3,7 @@ package fudan.se.lab4.dto;
 import fudan.se.lab4.constant.InfoConstant;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,14 +20,17 @@ public class Ingredient implements Serializable {
     private static final long serialVersionUID = 7600387145905184435L;
     private String name;
     private int number;
-    private static Map<String, Double> price;
-
+    private static Map<String, Double> price = new HashMap<>();
+    private static ArrayList<String> ingredients = new ArrayList<>();
     static {
-        price = new HashMap<>();
         price.put(InfoConstant.NAME_MILK, 1.2);
         price.put(InfoConstant.NAME_SUGAR, 1.2);
         price.put(InfoConstant.NAME_CREAM, 1.0);
         price.put(InfoConstant.NAME_CHOCOLATE, 1.2);
+        ingredients.add(InfoConstant.NAME_CHOCOLATE);
+        ingredients.add(InfoConstant.NAME_SUGAR);
+        ingredients.add(InfoConstant.NAME_CREAM);
+        ingredients.add(InfoConstant.NAME_MILK);
     }
 
     public Ingredient(String name, int number) {
@@ -39,6 +43,7 @@ public class Ingredient implements Serializable {
     //unit: $
 
     double getPrice() {
+        assert ingredients.contains(this.name):InfoConstant.INGREDIENT_NAME_ILLEGAL;
         return price.get(this.name);
     }
 
@@ -54,6 +59,7 @@ public class Ingredient implements Serializable {
     }
 
     public int getNumber() {
+        assert number >= 0:InfoConstant.INGREDIENT_NUMBER_ERROR;
         return number;
     }
 

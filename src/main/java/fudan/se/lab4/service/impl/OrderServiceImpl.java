@@ -16,6 +16,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public PaymentInfo pay(Order order) {
+        checkNull(order);
         double totalPrice = order.getTotalPrice();
         ArrayList<String> msgs = new ArrayList<>();
 
@@ -51,9 +52,11 @@ public class OrderServiceImpl implements OrderService {
      */
     double discountOfLargeEspresso(Order order, ArrayList<String> msgs) {
         //大杯Espresso, 2杯8折
-        //todo
         int count = (int) order.getOrderItems().stream().
-                filter(orderItem -> orderItem.getName().equals(InfoConstant.NAME_ESPRESSO) && orderItem.getSize() == 3).
+                filter(orderItem -> {
+                    assert orderItem != null:InfoConstant.ORDER_ITEM_NULL;
+                    return orderItem.getName().equals(InfoConstant.NAME_ESPRESSO) && orderItem.getSize() == 3;
+                }).
                 count();
 
         count = count / 2;
@@ -71,13 +74,18 @@ public class OrderServiceImpl implements OrderService {
      */
     double discountOfTea(Order order, ArrayList<String> msgs) {
         //Tea 买3送1
-//        todo
         int countGreenTea = (int) order.getOrderItems().stream()
-                .filter(orderItem -> orderItem.getName().equals(InfoConstant.NAME_GREENTEA))
+                .filter(orderItem -> {
+                    assert orderItem != null:InfoConstant.ORDER_ITEM_NULL;
+                    return orderItem.getName().equals(InfoConstant.NAME_GREENTEA);
+                })
                 .count();
 
         int countReaTea = (int) order.getOrderItems().stream()
-                .filter(orderItem -> orderItem.getName().equals(InfoConstant.NAME_REDTEA))
+                .filter(orderItem -> {
+                    assert orderItem != null:InfoConstant.ORDER_ITEM_NULL;
+                    return orderItem.getName().equals(InfoConstant.NAME_REDTEA);
+                })
                 .count();
 
         int freeNumber = (countGreenTea + countReaTea) / 4;
@@ -95,9 +103,11 @@ public class OrderServiceImpl implements OrderService {
      */
     double discountOfCappuccino(Order order, ArrayList<String> msgs) {
         //Cappuccino 第二杯半价
-//        todo
         int countCappuccino = (int) order.getOrderItems().stream()
-                .filter(orderItem -> orderItem.getName().equals(InfoConstant.NAME_CAPPUCCINO))
+                .filter(orderItem -> {
+                    assert orderItem != null:InfoConstant.ORDER_ITEM_NULL;
+                    return orderItem.getName().equals(InfoConstant.NAME_CAPPUCCINO);
+                })
                 .count();
 
         countCappuccino = countCappuccino / 2;
@@ -113,5 +123,10 @@ public class OrderServiceImpl implements OrderService {
      */
     double fullReduction(double totalPrice) {
         return (int) ((totalPrice) / 100) * 30.0;
+    }
+
+    private void checkNull(Order order){
+        assert order != null:InfoConstant.ORDER_NULL;
+        assert order.getOrderItems() != null:InfoConstant.ORDER_ITEMS_NULL;
     }
 }

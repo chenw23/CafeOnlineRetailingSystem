@@ -40,9 +40,13 @@ public class Order implements Serializable {
         assert orderItems != null : InfoConstant.ORDER_ITEMS_NULL;
 
         return orderItems.stream().map(orderItem -> {
-            assert orderItem.getIngredients() != null : InfoConstant.INGREDIENT_NULL;
+            assert orderItem != null:InfoConstant.ORDER_ITEM_NULL;
+            assert orderItem.getIngredients() != null : InfoConstant.INGREDIENTS_NULL;
             return orderItem.cost() + orderItem.getIngredients().stream()
-                    .map(ingredient -> ingredient.getPrice() * ingredient.getNumber())
+                    .map(ingredient -> {
+                        assert ingredient != null: InfoConstant.INGREDIENT_NULL;
+                        return ingredient.getPrice() * ingredient.getNumber();
+                    })
                     .mapToDouble(Double::doubleValue)
                     .sum();
         }).mapToDouble(Double::doubleValue).sum();
