@@ -16,6 +16,7 @@ import org.junit.Test;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static org.junit.Assert.assertEquals;
 
@@ -246,7 +247,7 @@ public class OrderServiceImplTest {
      * @return
      */
     private Order getOrder(ArrayList<OrderItem> orderItems) {
-        String orderID = "ID" + (int) (Math.random() * 10000);
+        String orderID = "" + Calendar.getInstance().getTimeInMillis();
         return new Order(orderID, orderItems);
     }
 
