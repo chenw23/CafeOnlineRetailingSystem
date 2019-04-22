@@ -47,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
     /**
      * Twenty percent off for every two cups of large espresso
      *
-     * @param order
+     * @param order the receive order
      * @return the discount for Espresso
      */
     double discountOfLargeEspresso(Order order, ArrayList<String> msgs) {

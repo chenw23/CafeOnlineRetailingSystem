@@ -83,8 +83,7 @@ public class OrderTest {
      * a helpful method to get a new order with
      * a random ID.
      *
-     * @param orderItems
-     * @return
+     * @return a new order with an id generted with the date
      */
     private Order getOrder(ArrayList<OrderItem> orderItems) {
         String orderID = "" + Calendar.getInstance().getTimeInMillis();

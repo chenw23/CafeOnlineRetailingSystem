@@ -9,7 +9,6 @@ import fudan.se.lab4.entity.drinkEntity.Cappuccino;
 import fudan.se.lab4.entity.drinkEntity.Espresso;
 import fudan.se.lab4.entity.drinkEntity.GreenTea;
 import fudan.se.lab4.entity.drinkEntity.RedTea;
-import fudan.se.lab4.service.OrderService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -243,8 +242,7 @@ public class OrderServiceImplTest {
     /**
      * offer a new order with a random ID
      *
-     * @param orderItems
-     * @return
+     * @return a new order with an id generted with the date
      */
     private Order getOrder(ArrayList<OrderItem> orderItems) {
         String orderID = "" + Calendar.getInstance().getTimeInMillis();
@@ -254,7 +252,7 @@ public class OrderServiceImplTest {
     /**
      * offer an array list of some ingredients
      *
-     * @return
+     * @return a easy array list of ingredient
      */
     private ArrayList<Ingredient> getIngredients() {
         ArrayList<Ingredient> ingredients = new ArrayList<>();
@@ -268,7 +266,7 @@ public class OrderServiceImplTest {
     /**
      * offer an array list of some message
      *
-     * @return
+     * @return a array list of message
      */
     private ArrayList<String> getMsg() {
         return new ArrayList<>();
