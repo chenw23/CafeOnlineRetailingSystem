@@ -39,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
      * @param order the order contains the items purchased
      * @return the total discount of the combination
      */
-    double combination(Order order, ArrayList<String> msgs) {
+    private double combination(Order order, ArrayList<String> msgs) {
         return discountOfLargeEspresso(order, msgs) + discountOfTea(order, msgs)
                 + discountOfCappuccino(order, msgs);
     }
@@ -50,11 +50,11 @@ public class OrderServiceImpl implements OrderService {
      * @param order the receive order
      * @return the discount for Espresso
      */
-    double discountOfLargeEspresso(Order order, ArrayList<String> msgs) {
+    private double discountOfLargeEspresso(Order order, ArrayList<String> msgs) {
         //大杯Espresso, 2杯8折
         int count = (int) order.getOrderItems().stream().
                 filter(orderItem -> {
-                    assert orderItem != null:InfoConstant.ORDER_ITEM_NULL;
+                    assert orderItem != null : InfoConstant.ORDER_ITEM_NULL;
                     return orderItem.getName().equals(InfoConstant.NAME_ESPRESSO) && orderItem.getSize() == 3;
                 }).
                 count();
@@ -72,18 +72,18 @@ public class OrderServiceImpl implements OrderService {
      * @param order the order contains the items purchased
      * @return the discount for tea
      */
-    double discountOfTea(Order order, ArrayList<String> msgs) {
+    private double discountOfTea(Order order, ArrayList<String> msgs) {
         //Tea 买3送1
         int countGreenTea = (int) order.getOrderItems().stream()
                 .filter(orderItem -> {
-                    assert orderItem != null:InfoConstant.ORDER_ITEM_NULL;
+                    assert orderItem != null : InfoConstant.ORDER_ITEM_NULL;
                     return orderItem.getName().equals(InfoConstant.NAME_GREENTEA);
                 })
                 .count();
 
         int countReaTea = (int) order.getOrderItems().stream()
                 .filter(orderItem -> {
-                    assert orderItem != null:InfoConstant.ORDER_ITEM_NULL;
+                    assert orderItem != null : InfoConstant.ORDER_ITEM_NULL;
                     return orderItem.getName().equals(InfoConstant.NAME_REDTEA);
                 })
                 .count();
@@ -101,11 +101,11 @@ public class OrderServiceImpl implements OrderService {
      * @param order the order contains the items purchased
      * @return the discount for Cappuccino
      */
-    double discountOfCappuccino(Order order, ArrayList<String> msgs) {
+    private double discountOfCappuccino(Order order, ArrayList<String> msgs) {
         //Cappuccino 第二杯半价
         int countCappuccino = (int) order.getOrderItems().stream()
                 .filter(orderItem -> {
-                    assert orderItem != null:InfoConstant.ORDER_ITEM_NULL;
+                    assert orderItem != null : InfoConstant.ORDER_ITEM_NULL;
                     return orderItem.getName().equals(InfoConstant.NAME_CAPPUCCINO);
                 })
                 .count();
@@ -121,12 +121,12 @@ public class OrderServiceImpl implements OrderService {
      * @param totalPrice the totalPrice of an order
      * @return the discount under the full reduction promotion
      */
-    double fullReduction(double totalPrice) {
+    private double fullReduction(double totalPrice) {
         return (int) ((totalPrice) / 100) * 30.0;
     }
 
-    private void checkNull(Order order){
-        assert order != null:InfoConstant.ORDER_NULL;
-        assert order.getOrderItems() != null:InfoConstant.ORDER_ITEMS_NULL;
+    private void checkNull(Order order) {
+        assert order != null : InfoConstant.ORDER_NULL;
+        assert order.getOrderItems() != null : InfoConstant.ORDER_ITEMS_NULL;
     }
 }

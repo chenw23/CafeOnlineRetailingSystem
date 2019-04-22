@@ -102,8 +102,6 @@ public class FileUtil {
             logger.info(e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
-
         return false;
     }
-
 }

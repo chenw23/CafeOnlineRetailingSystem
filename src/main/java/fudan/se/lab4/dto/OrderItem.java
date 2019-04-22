@@ -51,7 +51,7 @@ public abstract class OrderItem implements Serializable {
         return price;
     }
 
-    public void setPrice(double price) {
+    protected void setPrice(double price) {
         this.price = price;
     }
 
