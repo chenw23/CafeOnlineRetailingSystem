@@ -161,13 +161,13 @@ public class OrderServiceImplTest {
     @Test
     public void testPayWithFullReduction() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new GreenTea(ingredients, 2));
+        orderItems.add(new GreenTea(ingredients, 1));
         orderItems.add(new Espresso(ingredients, 3));
         orderItems.add(new Cappuccino(ingredients, 3));
         orderItems.add(new RedTea(ingredients, 3));
         orderItems.add(new RedTea(ingredients, 1));
         PaymentInfo paymentInfo = orderService.pay(getOrder(orderItems));
-        assertEquals(paymentInfo.getDiscount(), orderService.fullReduction(getOrder(orderItems).getTotalPrice()), 0.01);
+        assertEquals(paymentInfo.getDiscount(),30.0 , 0.01);
     }
 
     /**
@@ -179,65 +179,54 @@ public class OrderServiceImplTest {
         orderItems.add(new Cappuccino(ingredients, 3));
         orderItems.add(new Cappuccino(ingredients, 3));
         PaymentInfo paymentInfo = orderService.pay(getOrder(orderItems));
-        assertEquals(paymentInfo.getDiscount(), orderService.combination(getOrder(orderItems), getMsg()), 0.01);
+        assertEquals(paymentInfo.getDiscount(), 11.0, 0.01);
     }
 
     /**
-     * check the method discountOfLargeEspresso when there
+     * check the method pay when there
      * are three large cups of  Espresso
      */
     @Test
-    public void testDiscountOfLargeEspresso() {
+    public void testPayWithCombinationOfLargeEspresso() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new Espresso(ingredients, 2));
-        orderItems.add(new Espresso(ingredients, 3));
-        orderItems.add(new Cappuccino(ingredients, 3));
-        orderItems.add(new RedTea(ingredients, 3));
         orderItems.add(new Espresso(ingredients, 3));
         orderItems.add(new Espresso(ingredients, 3));
-        assertEquals(orderService.discountOfLargeEspresso(getOrder(orderItems), getMsg()), 8.0, 0.01);
+        orderItems.add(new Espresso(ingredients, 3));
+        PaymentInfo paymentInfo = orderService.pay(getOrder(orderItems));
+        assertEquals(paymentInfo.getDiscount(), 8.0, 0.01);
     }
 
     /**
-     * check the method discountOfLargeEspresso when there
-     * are three large cups of  Espresso
+     * check the method pay when there
+     * are two cups of Cappuccino
      */
     @Test
-    public void testDiscountOfCappuccino() {
+    public void testPayWithCombinationOfCappuccino() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new Espresso(ingredients, 3));
         orderItems.add(new Cappuccino(ingredients, 3));
         orderItems.add(new RedTea(ingredients, 3));
-        orderItems.add(new Cappuccino(ingredients, 3));
         orderItems.add(new Cappuccino(ingredients, 1));
-        assertEquals(orderService.discountOfCappuccino(getOrder(orderItems), getMsg()), 11.0, 0.01);
+        PaymentInfo paymentInfo = orderService.pay(getOrder(orderItems));
+        assertEquals(paymentInfo.getDiscount(), 11.0, 0.01);
     }
 
     /**
-     * check the method discountOfLargeEspresso when there
-     * are three large cups of  Espresso
-     */
-    @Test
-    public void testFullReduction() {
-        assertEquals(orderService.fullReduction(160), 30.0, 0.01);
-    }
-
-
-    /**
-     * check the method discountOfTea when there are two cups
+     * check the method pay when there are two cups
      * of RedTea and two cups of GreenTea
      */
     @Test
-    public void testDiscountOfTea() {
+    public void testPayWithCombinationOfTea() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new Espresso(ingredients, 2));
-        orderItems.add(new GreenTea(ingredients, 3));
-        orderItems.add(new GreenTea(ingredients, 3));
-        orderItems.add(new RedTea(ingredients, 3));
-        orderItems.add(new RedTea(ingredients, 3));
-        orderItems.add(new Cappuccino(ingredients, 3));
-        assertEquals(orderService.discountOfTea(getOrder(orderItems), getMsg()), 18.0, 0.01);
+        orderItems.add(new GreenTea(ingredients, 1));
+        orderItems.add(new GreenTea(ingredients, 1));
+        orderItems.add(new RedTea(ingredients, 1));
+        orderItems.add(new RedTea(ingredients, 1));
+        PaymentInfo paymentInfo = orderService.pay(getOrder(orderItems));
+        assertEquals(paymentInfo.getDiscount(), 18.0, 0.01);
     }
+
+
+
 
     /**
      * offer a new order with a random ID
