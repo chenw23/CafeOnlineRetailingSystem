@@ -1,8 +1,6 @@
 package fudan.se.lab4.dto;
 
 import fudan.se.lab4.constant.InfoConstant;
-import fudan.se.lab4.entity.drinkEntity.Coffee;
-import fudan.se.lab4.entity.drinkEntity.Tea;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,7 +12,8 @@ public class OrderItem implements Serializable {
     private int size;
     private List<Ingredient> ingredients;
 
-    public OrderItem(List<Ingredient> ingredients, int size) {
+    public OrderItem(String name, List<Ingredient> ingredients, int size) {
+        this.name = name;
         this.ingredients = ingredients;
         this.size = size;
     }
@@ -55,10 +54,10 @@ public class OrderItem implements Serializable {
                 cupPrice = 4;
                 break;
             case 3:
-                if (this instanceof Coffee) {
-                    cupPrice = 6;
-                } else if (this instanceof Tea) {
+                if (Menu.isTea(this.getName())) {
                     cupPrice = 5;
+                }else {
+                    cupPrice = 6;
                 }
                 break;
             default:

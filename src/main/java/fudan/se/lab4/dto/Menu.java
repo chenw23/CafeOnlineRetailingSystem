@@ -37,4 +37,7 @@ class Menu {
      static boolean contain(String key){
          return map.containsKey(key);
      }
+     static boolean isTea(String key){
+         return key.toUpperCase().contains("TEA");
+     }
 }

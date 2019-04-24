@@ -1,8 +1,6 @@
 package fudan.se.lab4.dto;
 
 import fudan.se.lab4.constant.InfoConstant;
-import fudan.se.lab4.entity.drinkEntity.Cappuccino;
-import fudan.se.lab4.entity.drinkEntity.Espresso;
 
 import org.junit.Test;
 
@@ -39,7 +37,7 @@ public class OrderTest {
     @Test
     public void testGetTotalPriceWithIngredientNull() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new Cappuccino(null, 2));
+        orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA,null, 2));
         Order order = getOrder(orderItems);
         try {
             order.getTotalPrice();
@@ -56,7 +54,7 @@ public class OrderTest {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new Ingredient(InfoConstant.NAME_CHOCOLATE, 2));
-        orderItems.add(new Cappuccino(ingredients, 2));
+        orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO,ingredients, 2));
         Order order = getOrder(orderItems);
         assertEquals(order.getTotalPrice(), 28.4, 0.01);
     }
@@ -70,7 +68,7 @@ public class OrderTest {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new Ingredient(InfoConstant.NAME_MILK, 2));
-        orderItems.add(new Espresso(ingredients, 4));
+        orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA,ingredients, 4));
         Order order = getOrder(orderItems);
         try {
             order.getTotalPrice();

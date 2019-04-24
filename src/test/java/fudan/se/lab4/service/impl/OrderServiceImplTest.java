@@ -5,10 +5,6 @@ import fudan.se.lab4.dto.Ingredient;
 import fudan.se.lab4.dto.Order;
 import fudan.se.lab4.dto.OrderItem;
 import fudan.se.lab4.dto.PaymentInfo;
-import fudan.se.lab4.entity.drinkEntity.Cappuccino;
-import fudan.se.lab4.entity.drinkEntity.Espresso;
-import fudan.se.lab4.entity.drinkEntity.GreenTea;
-import fudan.se.lab4.entity.drinkEntity.RedTea;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -65,7 +61,7 @@ public class OrderServiceImplTest {
     @Test
     public void testPayWithOrderItemNull() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new GreenTea(ingredients, 2));
+        orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA,ingredients, 2));
         orderItems.add(null);
         try {
             orderService.pay(getOrder(orderItems));
@@ -80,7 +76,7 @@ public class OrderServiceImplTest {
     @Test
     public void testPayWithIngredientsNull() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new GreenTea(null, 2));
+        orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA,null, 2));
         try {
             orderService.pay(getOrder(orderItems));
         }catch (AssertionError e){
@@ -97,7 +93,7 @@ public class OrderServiceImplTest {
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new Ingredient(InfoConstant.NAME_SUGAR,2));
         ingredients.add(null);
-        orderItems.add(new GreenTea(ingredients, 2));
+        orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA,ingredients, 2));
         try {
             orderService.pay(getOrder(orderItems));
         }catch (AssertionError e){
@@ -113,7 +109,7 @@ public class OrderServiceImplTest {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new Ingredient(InfoConstant.NAME_SUGAR,-1));
-        orderItems.add(new GreenTea(ingredients, 2));
+        orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA,ingredients, 2));
         try {
             orderService.pay(getOrder(orderItems));
         }catch (AssertionError e){
@@ -130,7 +126,7 @@ public class OrderServiceImplTest {
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new Ingredient(InfoConstant.NAME_SUGAR,2));
         ingredients.add(new Ingredient(null,2));
-        orderItems.add(new GreenTea(ingredients, 2));
+        orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA,ingredients, 2));
         try {
             orderService.pay(getOrder(orderItems));
         }catch (AssertionError e){
@@ -147,7 +143,7 @@ public class OrderServiceImplTest {
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new Ingredient(InfoConstant.NAME_SUGAR,2));
         ingredients.add(new Ingredient("Othername",2));
-        orderItems.add(new GreenTea(ingredients, 2));
+        orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA,ingredients, 2));
         try {
             orderService.pay(getOrder(orderItems));
         }catch (AssertionError e){
@@ -161,11 +157,11 @@ public class OrderServiceImplTest {
     @Test
     public void testPayWithFullReduction() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new GreenTea(ingredients, 1));
-        orderItems.add(new Espresso(ingredients, 3));
-        orderItems.add(new Cappuccino(ingredients, 3));
-        orderItems.add(new RedTea(ingredients, 3));
-        orderItems.add(new RedTea(ingredients, 1));
+        orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA,ingredients, 1));
+        orderItems.add(new OrderItem(InfoConstant.NAME_ESPRESSO,ingredients, 3));
+        orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO,ingredients, 3));
+        orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA,ingredients, 3));
+        orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA,ingredients, 1));
         PaymentInfo paymentInfo = orderService.pay(getOrder(orderItems));
         assertEquals(paymentInfo.getDiscount(),30.0 , 0.01);
     }
@@ -176,8 +172,8 @@ public class OrderServiceImplTest {
     @Test
     public void testPayWithCombination() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new Cappuccino(ingredients, 3));
-        orderItems.add(new Cappuccino(ingredients, 3));
+        orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO,ingredients, 3));
+        orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO,ingredients, 3));
         PaymentInfo paymentInfo = orderService.pay(getOrder(orderItems));
         assertEquals(paymentInfo.getDiscount(), 11.0, 0.01);
     }
@@ -189,9 +185,9 @@ public class OrderServiceImplTest {
     @Test
     public void testPayWithCombinationOfLargeEspresso() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new Espresso(ingredients, 3));
-        orderItems.add(new Espresso(ingredients, 3));
-        orderItems.add(new Espresso(ingredients, 3));
+        orderItems.add(new OrderItem(InfoConstant.NAME_ESPRESSO,ingredients, 3));
+        orderItems.add(new OrderItem(InfoConstant.NAME_ESPRESSO,ingredients, 3));
+        orderItems.add(new OrderItem(InfoConstant.NAME_ESPRESSO,ingredients, 3));
         PaymentInfo paymentInfo = orderService.pay(getOrder(orderItems));
         assertEquals(paymentInfo.getDiscount(), 8.0, 0.01);
     }
@@ -201,26 +197,26 @@ public class OrderServiceImplTest {
      * are two cups of Cappuccino
      */
     @Test
-    public void testPayWithCombinationOfCappuccino() {
+    public void testPayWithCombinationOfOrderItemCappuccino() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new Cappuccino(ingredients, 3));
-        orderItems.add(new RedTea(ingredients, 3));
-        orderItems.add(new Cappuccino(ingredients, 1));
+        orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO,ingredients, 3));
+        orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA,ingredients, 3));
+        orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO,ingredients, 1));
         PaymentInfo paymentInfo = orderService.pay(getOrder(orderItems));
         assertEquals(paymentInfo.getDiscount(), 11.0, 0.01);
     }
 
     /**
      * check the method pay when there are two cups
-     * of RedTea and two cups of GreenTea
+     * of RedTea and two cups of GREENTEA
      */
     @Test
     public void testPayWithCombinationOfTea() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new GreenTea(ingredients, 1));
-        orderItems.add(new GreenTea(ingredients, 1));
-        orderItems.add(new RedTea(ingredients, 1));
-        orderItems.add(new RedTea(ingredients, 1));
+        orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA,ingredients, 1));
+        orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA,ingredients, 1));
+        orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA,ingredients, 1));
+        orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA,ingredients, 1));
         PaymentInfo paymentInfo = orderService.pay(getOrder(orderItems));
         assertEquals(paymentInfo.getDiscount(), 18.0, 0.01);
     }
