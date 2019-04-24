@@ -3,9 +3,6 @@ package fudan.se.lab4.dto;
 import fudan.se.lab4.constant.InfoConstant;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Each class you implement should represent an ingredient;
@@ -26,15 +23,11 @@ public class Ingredient implements Serializable {
         this.number = number;
     }
 
-
-    //add price for ingredient
-    //unit: $
-
     public Ingredient() {
     }
 
     public String getName() {
-        assert Menu.contain(name):InfoConstant.INGREDIENT_NAME_ILLEGAL;
+        assert Menu.contain(name) : InfoConstant.INGREDIENT_NAME_ILLEGAL;
         return name;
     }
 
@@ -43,7 +36,7 @@ public class Ingredient implements Serializable {
     }
 
     public int getNumber() {
-        assert number >= 0:InfoConstant.INGREDIENT_NUMBER_ERROR;
+        assert number >= 0 : InfoConstant.INGREDIENT_NUMBER_ERROR;
         return number;
     }
 

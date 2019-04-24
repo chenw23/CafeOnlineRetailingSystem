@@ -18,7 +18,8 @@ public class OrderItem implements Serializable {
         this.size = size;
     }
 
-    public OrderItem() {}
+    public OrderItem() {
+    }
 
     public String getName() {
         return name;
@@ -56,7 +57,7 @@ public class OrderItem implements Serializable {
             case 3:
                 if (Menu.isTea(this.getName())) {
                     cupPrice = 5;
-                }else {
+                } else {
                     cupPrice = 6;
                 }
                 break;

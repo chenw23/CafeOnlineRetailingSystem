@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Order implements Serializable {
     private static final long serialVersionUID = 6442456165785725948L;
-
     private String id;
     private List<OrderItem> orderItems;
 
@@ -40,11 +39,11 @@ public class Order implements Serializable {
         assert orderItems != null : InfoConstant.ORDER_ITEMS_NULL;
 
         return orderItems.stream().map(orderItem -> {
-            assert orderItem != null:InfoConstant.ORDER_ITEM_NULL;
+            assert orderItem != null : InfoConstant.ORDER_ITEM_NULL;
             assert orderItem.getIngredients() != null : InfoConstant.INGREDIENTS_NULL;
             return orderItem.cost() + orderItem.getIngredients().stream()
                     .map(ingredient -> {
-                        assert ingredient != null: InfoConstant.INGREDIENT_NULL;
+                        assert ingredient != null : InfoConstant.INGREDIENT_NULL;
                         return Menu.getValue(ingredient.getName()) * ingredient.getNumber();
                     })
                     .mapToDouble(Double::doubleValue)
