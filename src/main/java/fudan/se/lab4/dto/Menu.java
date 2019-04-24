@@ -1,5 +1,10 @@
 package fudan.se.lab4.dto;
 
+import fudan.se.lab4.constant.InfoConstant;
+import fudan.se.lab4.util.FileUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -13,22 +18,15 @@ import java.util.Properties;
  */
 class Menu {
     private static Map<String, Double> map = new HashMap<>();
-
+    private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
     static {
         try {
             InputStream inputStream = Menu.class.getClassLoader().getResourceAsStream("menu.properties");
             Properties properties = new Properties();
             properties.load(inputStream);
-            Iterator<Map.Entry<Object, Object>> iterator = properties.entrySet().iterator();
-            Map<String, Double> tmap = new HashMap<String, Double>();
-            while (iterator.hasNext()) {
-                Map.Entry<Object, Object> objectObjectEntry = iterator.next();
-                tmap.put(objectObjectEntry.getKey().toString(), Double.parseDouble(objectObjectEntry.getValue().toString()));
-            }
-            map.clear();
-            map.putAll(tmap);
+            properties.forEach((key, value) -> map.put(key.toString(),Double.parseDouble(value.toString())));
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.info(InfoConstant.FILE_NOT_FOUND);
         }
     }
 

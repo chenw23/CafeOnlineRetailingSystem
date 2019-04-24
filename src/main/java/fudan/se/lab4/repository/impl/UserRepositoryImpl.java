@@ -21,7 +21,7 @@ public class UserRepositoryImpl {
     private String[] objectToStringArray(User user) {
         // if user already exists, throw exception
         if (FileUtil.exist(user.getName(), FileConstant.USER_CSV)) {
-            throw new RuntimeException(MessageFormat.format(InfoConstant.Entity_EXIST, "User",
+            throw new RuntimeException(MessageFormat.format(InfoConstant.ENTITY_EXIST, "User",
                     user.getName()));
         }
         String[] array = new String[2];
