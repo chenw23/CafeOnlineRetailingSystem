@@ -45,7 +45,7 @@ public class Order implements Serializable {
             return orderItem.cost() + orderItem.getIngredients().stream()
                     .map(ingredient -> {
                         assert ingredient != null: InfoConstant.INGREDIENT_NULL;
-                        return ingredient.getPrice() * ingredient.getNumber();
+                        return Menu.getValue(ingredient.getName()) * ingredient.getNumber();
                     })
                     .mapToDouble(Double::doubleValue)
                     .sum();

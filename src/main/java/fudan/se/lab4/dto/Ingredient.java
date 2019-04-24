@@ -20,18 +20,6 @@ public class Ingredient implements Serializable {
     private static final long serialVersionUID = 7600387145905184435L;
     private String name;
     private int number;
-    private static Map<String, Double> price = new HashMap<>();
-    private static ArrayList<String> ingredients = new ArrayList<>();
-    static {
-        price.put(InfoConstant.NAME_MILK, 1.2);
-        price.put(InfoConstant.NAME_SUGAR, 1.2);
-        price.put(InfoConstant.NAME_CREAM, 1.0);
-        price.put(InfoConstant.NAME_CHOCOLATE, 1.2);
-        ingredients.add(InfoConstant.NAME_CHOCOLATE);
-        ingredients.add(InfoConstant.NAME_SUGAR);
-        ingredients.add(InfoConstant.NAME_CREAM);
-        ingredients.add(InfoConstant.NAME_MILK);
-    }
 
     public Ingredient(String name, int number) {
         this.name = name;
@@ -42,15 +30,11 @@ public class Ingredient implements Serializable {
     //add price for ingredient
     //unit: $
 
-    double getPrice() {
-        assert ingredients.contains(this.name):InfoConstant.INGREDIENT_NAME_ILLEGAL;
-        return price.get(this.name);
-    }
-
     public Ingredient() {
     }
 
     public String getName() {
+        assert Menu.contain(name):InfoConstant.INGREDIENT_NAME_ILLEGAL;
         return name;
     }
 

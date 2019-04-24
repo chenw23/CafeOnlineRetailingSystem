@@ -7,21 +7,19 @@ import fudan.se.lab4.entity.drinkEntity.Tea;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract class OrderItem implements Serializable {
+public class OrderItem implements Serializable {
     private static final long serialVersionUID = -2451304424331432011L;
 
     private String name;
     private int size;
     private List<Ingredient> ingredients;
-    private double price;
 
     public OrderItem(List<Ingredient> ingredients, int size) {
         this.ingredients = ingredients;
         this.size = size;
     }
 
-    public OrderItem() {
-    }
+    public OrderItem() {}
 
     public String getName() {
         return name;
@@ -45,14 +43,6 @@ public abstract class OrderItem implements Serializable {
 
     public void setSize(int size) {
         this.size = size;
-    }
-
-    private double getPrice() {
-        return price;
-    }
-
-    protected void setPrice(double price) {
-        this.price = price;
     }
 
     private double size2price(int size) {
@@ -79,7 +69,7 @@ public abstract class OrderItem implements Serializable {
 
     double cost() {
         double drinkPrice;
-        drinkPrice = getPrice() + size2price(getSize());
+        drinkPrice = Menu.getValue(this.name) + size2price(getSize());
         return drinkPrice;
     }
 }
