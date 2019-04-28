@@ -55,11 +55,7 @@ public class OrderItem implements Serializable {
                 cupPrice = 4;
                 break;
             case 3:
-                if (Menu.isTea(this.getName())) {
-                    cupPrice = 5;
-                } else {
-                    cupPrice = 6;
-                }
+                cupPrice = Menu.isTea(this.name)?5:6;
                 break;
             default:
                 throw new RuntimeException(InfoConstant.CUP_SIZE_ERROR);

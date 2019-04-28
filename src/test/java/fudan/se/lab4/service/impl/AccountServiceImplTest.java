@@ -58,7 +58,7 @@ public class AccountServiceImplTest {
         try {
             accountService.login(user);
         } catch (RuntimeException e) {
-            assertEquals(e.getMessage(), MessageFormat.format(InfoConstant.Entity_NOT_FOUND, name));
+            assertEquals(e.getMessage(), MessageFormat.format(InfoConstant.ENTITY_NOT_FOUND, name));
         }
     }
 

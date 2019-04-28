@@ -83,7 +83,7 @@ public class FileUtil {
             throw new RuntimeException(e.getMessage());
         }
 
-        throw new RuntimeException(MessageFormat.format(InfoConstant.Entity_NOT_FOUND, Name));
+        throw new RuntimeException(MessageFormat.format(InfoConstant.ENTITY_NOT_FOUND, Name));
     }
 
     public static boolean exist(String name, String dataFilePath) {
