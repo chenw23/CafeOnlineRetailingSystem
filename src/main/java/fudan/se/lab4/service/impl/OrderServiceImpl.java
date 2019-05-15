@@ -3,6 +3,7 @@ package fudan.se.lab4.service.impl;
 import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.dto.Order;
 import fudan.se.lab4.dto.PaymentInfo;
+import fudan.se.lab4.service.MarketingStrategy;
 import fudan.se.lab4.service.OrderService;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +11,16 @@ import java.util.ArrayList;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    private ArrayList<MarketingStrategy> strategies = new ArrayList<>();
+
     /**
      * @param order the order contains the items purchased
      * @return the payment information
      */
     @Override
     public PaymentInfo pay(Order order) {
+        //TODO choose the best strategy and apply it to the order.
         checkNull(order);
         double totalPrice = order.getTotalPrice();
         ArrayList<String> msgs = new ArrayList<>();
@@ -33,6 +38,10 @@ public class OrderServiceImpl implements OrderService {
 
         return new PaymentInfo(totalPrice, discount,
                 totalPrice - discount, msgs);
+    }
+
+    public void setStrategies(ArrayList<MarketingStrategy> strategies){
+        //TODO
     }
 
     /**
