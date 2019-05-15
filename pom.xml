@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>fudan.se</groupId>
-    <artifactId>lab4-skeleton</artifactId>
+    <artifactId>lab5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lab4-skeleton</name>
+    <name>lab5</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
