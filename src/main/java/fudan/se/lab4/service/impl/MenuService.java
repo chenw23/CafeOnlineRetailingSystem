@@ -22,7 +22,7 @@ public class MenuService {
     private static Logger logger = LoggerFactory.getLogger(MenuService.class);
     static {
         try {
-            InputStream inputStream = MenuService.class.getClassLoader().getResourceAsStream("application-position.properties");
+            InputStream inputStream = MenuService.class.getClassLoader().getResourceAsStream("application-position2currency.properties");
             Properties properties = new Properties();
             properties.load(inputStream);
             properties.forEach((key, value) -> {
