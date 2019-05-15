@@ -1,13 +1,13 @@
 package fudan.se.lab4.dto;
 
 import fudan.se.lab4.constant.InfoConstant;
+import fudan.se.lab4.service.impl.MenuService;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = -2451304424331432011L;
-
     private String name;
     private int size;
     private List<Ingredient> ingredients;
@@ -18,8 +18,7 @@ public class OrderItem implements Serializable {
         this.size = size;
     }
 
-    public OrderItem() {
-    }
+    public OrderItem() {}
 
     public String getName() {
         return name;
@@ -55,7 +54,7 @@ public class OrderItem implements Serializable {
                 cupPrice = 4;
                 break;
             case 3:
-                cupPrice = Menu.isTea(this.name)?5:6;
+                cupPrice = 6;
                 break;
             default:
                 throw new RuntimeException(InfoConstant.CUP_SIZE_ERROR);
@@ -63,9 +62,9 @@ public class OrderItem implements Serializable {
         return cupPrice;
     }
 
-    double cost() {
+    double cost(String currency) {
         double drinkPrice;
-        drinkPrice = Menu.getValue(this.name) + size2price(getSize());
+        drinkPrice = MenuService.getPrice(currency,this.name) + size2price(getSize());
         return drinkPrice;
     }
 }
