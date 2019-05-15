@@ -6,10 +6,9 @@ package fudan.se.lab4.service.impl;
  */
 public class SystemInfo {
 
-
+    //TODO:get and set the date. Considering that the systemInfo is unique, single instance model is used here.
     private String position;
-    private String currency;
-
+    private String date;
     private static SystemInfo systemInfo;
     private SystemInfo(){}
 
@@ -23,6 +22,8 @@ public class SystemInfo {
         }
         return systemInfo;
     }
+
+
 
     /**
      * to get the order position.
@@ -42,22 +43,4 @@ public class SystemInfo {
         return this;
     }
 
-
-    /**
-     * to get the order currency.
-     * @return the currency
-     */
-    public String getCurrency() {
-        return currency;
-    }
-
-    /**
-     * offer the api for functional programming
-     * @param currency the fetched currency
-     * @return the object itself
-     */
-    public SystemInfo setCurrency(String currency) {
-        this.currency = currency;
-        return this;
-    }
 }

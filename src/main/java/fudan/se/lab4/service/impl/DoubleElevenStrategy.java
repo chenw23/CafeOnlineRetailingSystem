@@ -15,11 +15,13 @@ public class DoubleElevenStrategy implements MarketingStrategy {
      * @return Can the order has some discounts?
      */
     private boolean isValid(Order order){
+        //TODO
         return true;
     }
 
     @Override
     public double getDiscount(Order order){
+        //TODO
         if(isValid(order)){
             return 0;
         }

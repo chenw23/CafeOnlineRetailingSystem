@@ -43,7 +43,8 @@ public class InfoConstant {
     public static final String NAME_CHOCOLATE = "Chocolate";
     public static final String NAME_CREAM = "Cream";
     public static final String NAME_SUGAR = "Sugar";
-//    // framework info
+//TODO: Needs to be an intermediary class.
+
 //    public static final String ENTITY_EXIST = "{0} already exists, name: {1}";
 //    public static final String ENTITY_NOT_FOUND = "Object not found, name: {0}";
 //    public static final String FILE_CANNOT_BE_DIR = "Failed to create file, {0} is not a valid name";

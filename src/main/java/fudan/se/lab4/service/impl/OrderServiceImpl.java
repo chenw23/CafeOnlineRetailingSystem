@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public PaymentInfo pay(Order order) {
-        //TODO choose the best strategy and apply it to the order.
+        //TODO:choose the best strategy and apply it to the order.
         checkNull(order);
         double totalPrice = order.getTotalPrice();
         ArrayList<String> msgs = new ArrayList<>();
@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public void setStrategies(ArrayList<MarketingStrategy> strategies){
-        //TODO
+        //TODO:set strategies.
     }
 
     /**
