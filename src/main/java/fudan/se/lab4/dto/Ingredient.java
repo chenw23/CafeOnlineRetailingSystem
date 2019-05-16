@@ -27,7 +27,6 @@ public class Ingredient implements Serializable {
     }
 
     public String getName() {
-        assert Menu.contain(name) : InfoConstant.INGREDIENT_NAME_ILLEGAL;
         return name;
     }
 
