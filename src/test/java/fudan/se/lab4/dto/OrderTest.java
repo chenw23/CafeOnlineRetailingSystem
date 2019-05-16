@@ -82,6 +82,7 @@ public class OrderTest {
      */
     private Order getOrder(ArrayList<OrderItem> orderItems) {
         String orderID = "" + Calendar.getInstance().getTimeInMillis();
-        return new Order(orderID, orderItems);
+//        FIXME: This test method should be changed due to refactoring
+        return new Order();
     }
 }

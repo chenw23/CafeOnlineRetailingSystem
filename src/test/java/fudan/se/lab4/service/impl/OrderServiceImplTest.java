@@ -227,7 +227,8 @@ public class OrderServiceImplTest {
      */
     private Order getOrder(ArrayList<OrderItem> orderItems) {
         String orderID = "" + Calendar.getInstance().getTimeInMillis();
-        return new Order(orderID, orderItems);
+//        FIXME: This test should be changed due to refactor
+        return new Order();
     }
 
     /**
