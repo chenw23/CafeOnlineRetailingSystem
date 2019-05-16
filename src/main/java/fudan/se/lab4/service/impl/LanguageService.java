@@ -17,41 +17,23 @@ import java.util.Properties;
  * @Date: 2019/5/15 10:30
  */
 public class LanguageService {
-    private static Class LanguageProvider;
-    private static Map<String,String> languageReposity = new HashMap();
-    private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
-    static {
-        InputStream inputStream = MenuService.class.getClassLoader().getResourceAsStream("application-language.properties");
-        Properties properties = new Properties();
-        try {
-            properties.load(inputStream);
-            properties.forEach((key,value)->languageReposity.put(key.toString(),value.toString()));
-        } catch (IOException e) {
-            logger.info(InfoConstant.FILE_NOT_FOUND);
-        }
-    }
 
     /**
-     *
+     * the language switch
      * @param language the update language
      */
     public static void updateLanguage(String language){
-        String path = "fudan.se.lab4.constant.InfoConstant_";
-        try{
-            LanguageProvider = Class.forName(path + languageReposity.get(language).toUpperCase());
-        } catch (ClassNotFoundException e) {
-            logger.info(InfoConstant.FILE_NOT_FOUND);
-        }
+        //TODO
     }
 
-    public static String getValue(String type){
-        String result = "Language error.";
-        try{
-            result = LanguageProvider.getField(type).toString();
-        }catch (NoSuchFieldException e){
-            logger.info(InfoConstant.FILE_NOT_FOUND);
-        }
-        return result;
+    /**
+     * pass the information name
+     * @param name the name of the information
+     * @return the value in special language
+     */
+    public static String getValue(String name){
+        //TODO
+        return null;
     }
 
 }
