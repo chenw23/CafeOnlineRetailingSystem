@@ -222,18 +222,17 @@ public class OrderServiceImplTest {
 
     /**
      * offer a new order with a random ID
-     *
+     * and a default currency of rmb.
      * @return a new order with an id generted with the date
      */
     private Order getOrder(ArrayList<OrderItem> orderItems) {
         String orderID = "" + Calendar.getInstance().getTimeInMillis();
-//        FIXME: This test should be changed due to refactor
-        return new Order();
+        String currency = "rmb";
+        return new Order(orderID,currency,orderItems);
     }
 
     /**
      * offer an array list of some ingredients
-     *
      * @return a easy array list of ingredient
      */
     private ArrayList<Ingredient> getIngredients() {
@@ -247,7 +246,6 @@ public class OrderServiceImplTest {
 
     /**
      * offer an array list of some message
-     *
      * @return a array list of message
      */
     private ArrayList<String> getMsg() {

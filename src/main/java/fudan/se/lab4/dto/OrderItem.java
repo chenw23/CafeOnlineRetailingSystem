@@ -62,9 +62,22 @@ public class OrderItem implements Serializable {
         return cupPrice;
     }
 
+    /**
+     * The price of each orderItem consists of three parts,
+     * the price of cup, the price of ingredients, the price of drink.
+     * @param currency the currency
+     * @return the price
+     */
     double cost(String currency) {
         double drinkPrice;
-        drinkPrice = MenuService.getPrice(currency,this.name) + size2price(getSize());
+        assert ingredients != null : InfoConstant.INGREDIENTS_NULL;
+        double ingredietnTotalPrice = ingredients.stream().map(ingredient -> {
+                    assert ingredient != null : InfoConstant.INGREDIENT_NULL;
+                    return MenuService.getInstance().getPrice(currency,ingredient.getName()) * ingredient.getNumber();
+                })
+                .mapToDouble(Double::doubleValue)
+                .sum();
+        drinkPrice = MenuService.getInstance().getPrice(currency,this.name) + size2price(getSize()) + ingredietnTotalPrice;
         return drinkPrice;
     }
 }

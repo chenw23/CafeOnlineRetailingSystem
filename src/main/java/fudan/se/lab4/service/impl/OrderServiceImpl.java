@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public void setStrategies(ArrayList<MarketingStrategy> strategies){
-        //TODO:set strategies.
+        this.strategies = strategies;
     }
 
     /**

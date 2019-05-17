@@ -3,10 +3,6 @@ package fudan.se.lab4.service.impl;
 import fudan.se.lab4.dto.Order;
 import fudan.se.lab4.service.MarketingStrategy;
 
-/**
- * @author: jiaxing liu
- * @Date: 2019/5/15 10:03
- */
 public class DoubleElevenStrategy implements MarketingStrategy {
 
     /**

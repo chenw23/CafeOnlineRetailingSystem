@@ -2,10 +2,6 @@ package fudan.se.lab4.service;
 
 import fudan.se.lab4.dto.Order;
 
-/**
- * @author: jiaxing liu
- * @Date: 2019/5/15 9:53
- */
 public interface MarketingStrategy {
 
     /**

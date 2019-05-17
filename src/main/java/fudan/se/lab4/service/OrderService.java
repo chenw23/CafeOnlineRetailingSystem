@@ -7,7 +7,7 @@ public interface OrderService {
     /**
      *
      * @param order the order
-     * @return
+     * @return the information of payment.
      */
     PaymentInfo pay(Order order);
 }

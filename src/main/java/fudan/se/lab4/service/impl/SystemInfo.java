@@ -1,14 +1,13 @@
 package fudan.se.lab4.service.impl;
 
-/**
- * @author: jiaxing liu
- * @Date: 2019/5/15 9:07
- */
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class SystemInfo {
 
-    //TODO:get and set the date. Considering that the systemInfo is unique, single instance model is used here.
+
     private String position;
-    private String date;
     private static SystemInfo systemInfo;
     private SystemInfo(){}
 
@@ -34,13 +33,19 @@ public class SystemInfo {
     }
 
     /**
-     * offer the api for functional programming
      * @param position the fetched position
-     * @return the object itself
      */
-    public SystemInfo setPosition(String position) {
+    public void setPosition(String position) {
         this.position = position;
-        return this;
     }
 
+    /**
+     *
+     * @return the date of the syetem.
+     */
+    public String getDate(){
+        Date dt = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(dt);
+    }
 }

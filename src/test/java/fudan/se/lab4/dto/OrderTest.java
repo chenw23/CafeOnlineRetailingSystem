@@ -75,14 +75,13 @@ public class OrderTest {
     }
 
     /**
-     * a helpful method to get a new order with
-     * a random ID.
-     *
+     * offer a new order with a random ID
+     * and a default currency of rmb.
      * @return a new order with an id generted with the date
      */
     private Order getOrder(ArrayList<OrderItem> orderItems) {
         String orderID = "" + Calendar.getInstance().getTimeInMillis();
-//        FIXME: This test method should be changed due to refactoring
-        return new Order();
+        String currency = "rmb";
+        return new Order(orderID,currency,orderItems);
     }
 }

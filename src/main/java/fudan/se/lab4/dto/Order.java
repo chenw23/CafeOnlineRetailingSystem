@@ -12,6 +12,7 @@ public class Order implements Serializable {
     private String id;
     private List<OrderItem> orderItems;
     private String currency;
+
     public Order(String id,String currency, List<OrderItem> orderItems) {
         this.currency = currency;
         this.id = id;
@@ -47,17 +48,11 @@ public class Order implements Serializable {
     public double getTotalPrice() {
 
         assert orderItems != null : InfoConstant.ORDER_ITEMS_NULL;
-
         return orderItems.stream().map(orderItem -> {
-            assert orderItem != null : InfoConstant.ORDER_ITEM_NULL;
-            assert orderItem.getIngredients() != null : InfoConstant.INGREDIENTS_NULL;
-            return orderItem.cost(currency) + orderItem.getIngredients().stream()
-                    .map(ingredient -> {
-                        assert ingredient != null : InfoConstant.INGREDIENT_NULL;
-                        return MenuService.getPrice(currency,ingredient.getName()) * ingredient.getNumber();
-                    })
-                    .mapToDouble(Double::doubleValue)
-                    .sum();
-        }).mapToDouble(Double::doubleValue).sum();
+                    assert orderItem != null : InfoConstant.ORDER_ITEM_NULL;
+                    return orderItem.cost(currency);
+                })
+                .mapToDouble(Double::doubleValue)
+                .sum();
     }
 }
