@@ -31,7 +31,7 @@ public class LanguageServiceTest {
     public void testGetValueInChinese(){
         String language = "Chinese";
         obj.updateLanguage(language);
-        //TODO:liu There the information should be a reference, not a built-in constant.
+        //TODO:liu.Here the information should be a reference, not a built-in constant.
         assertEquals(obj.getValue("USERNAME_OR_PASS_ERROR"),"用户名或密码错误");
     }
 
@@ -39,7 +39,7 @@ public class LanguageServiceTest {
     public void testGetValueInEnglish(){
         String language = "English";
         obj.updateLanguage(language);
-        //TODO:liu There the information should be a reference, not a built-in constant.
+        //TODO:liu.Here the information should be a reference, not a built-in constant.
         assertEquals(obj.getValue("USERNAME_OR_PASS_ERROR"),"Username or password error.");
     }
 }
