@@ -4,6 +4,7 @@ import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.dto.Ingredient;
 import fudan.se.lab4.dto.Order;
 import fudan.se.lab4.dto.OrderItem;
+import fudan.se.lab4.service.TestHelper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -62,7 +63,7 @@ public class DoubleElevenStrategyTest {
         ingredients.add(new Ingredient(InfoConstant.NAME_MILK,2));
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO,ingredients,2));
-        return new Order("12345678",currency,orderItems);
+        return TestHelper.getOrder(currency,orderItems);
     }
 
     public boolean isDoubleEleven(){
