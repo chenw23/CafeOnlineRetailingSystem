@@ -1,9 +1,13 @@
 package fudan.se.lab4.service.impl;
 
+import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.dto.Order;
 import fudan.se.lab4.dto.OrderItem;
+import fudan.se.lab4.dto.PaymentInfo;
 import fudan.se.lab4.service.MarketingStrategy;
 
+import java.text.Format;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,10 +33,14 @@ public class DoubleElevenStrategy implements MarketingStrategy {
      */
 
     @Override
-    public double getDiscount(Order order){
+    public PaymentInfo getDiscount(Order order){
+        double totalPrice = order.getTotalPrice();
         if(isValid()){
-            return (order.getTotalPrice())/2;
+            double discount = totalPrice/2;
+            ArrayList<String> msgs = new ArrayList<>();
+            msgs.add(String.format(InfoConstant.DISCOUNT_Double_Eleven,discount));
+            return new PaymentInfo(totalPrice,discount,totalPrice-discount,msgs);
         }
-        return 0;
+        return new PaymentInfo(totalPrice,0,totalPrice,null);
     }
 }

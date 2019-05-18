@@ -35,6 +35,10 @@ public class InfoConstant {
     public static final String DISCOUNT_TEA = "Tea 买3送1，折扣 %d$";
     public static final String DISCOUNT_ESPRESSO = "大杯Espresso 2杯8折，折扣 %d$";
     public static final String DISCOUNT_FULL_REDUCTION = "所有商品满100$省30$,折扣 %f";
+    public static final String DISCOUNT_Double_Eleven = "双十一所有商品打五折,折扣 %f";
+    public static final String DISCOUNT_TeaAndCoffee15OFF = "订单中包含至少一件茶类商品或至少一件咖啡类商品打85折,折扣 %f";
+
+
     public static final String NAME_ESPRESSO = "Espresso";
     public static final String NAME_REDTEA = "RedTea";
     public static final String NAME_GREENTEA = "GreenTea";
