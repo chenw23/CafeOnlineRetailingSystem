@@ -1,8 +1,6 @@
 package fudan.se.lab4.dto;
 
 import fudan.se.lab4.constant.InfoConstant;
-import fudan.se.lab4.service.impl.MenuService;
-import fudan.se.lab4.service.impl.SystemInfo;
 
 import java.io.Serializable;
 import java.util.List;
