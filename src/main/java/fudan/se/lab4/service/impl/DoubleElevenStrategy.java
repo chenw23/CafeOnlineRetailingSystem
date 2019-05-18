@@ -18,8 +18,7 @@ public class DoubleElevenStrategy implements MarketingStrategy {
         String pattern = "\\d{4}-11-11.";
         Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(date);
-        boolean bool = m.matches();
-        return bool;
+        return m.matches();
     }
 
     /**
