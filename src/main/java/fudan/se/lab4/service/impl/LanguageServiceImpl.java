@@ -19,7 +19,7 @@ public class LanguageServiceImpl implements LanguageService {
     private static Map<String,String> languageReposity = new HashMap();
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
     static {
-        InputStream inputStream = MenuService.class.getClassLoader().getResourceAsStream("application-language.properties");
+        InputStream inputStream = CurrencyServiceImpl.class.getClassLoader().getResourceAsStream("application-language.properties");
         Properties properties = new Properties();
         try {
             properties.load(inputStream);
@@ -68,7 +68,7 @@ public class LanguageServiceImpl implements LanguageService {
         }catch (NoSuchFieldException e){
             logger.info(InfoConstant.FILE_NOT_FOUND);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            logger.info(e.getMessage());
         }
         return result;
     }
