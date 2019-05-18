@@ -1,25 +1,38 @@
 package fudan.se.lab4.service.impl;
 
 import fudan.se.lab4.dto.Order;
+import fudan.se.lab4.dto.OrderItem;
 import fudan.se.lab4.service.MarketingStrategy;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DoubleElevenStrategy implements MarketingStrategy {
 
     /**
      * to check on whether the marketing strategy can be applied to the order or not.
-     * @param order the order to check
      * @return Can the order has some discounts?
      */
-    private boolean isValid(Order order){
-        //TODO
-        return true;
+    private boolean isValid(){
+        String date = SystemInfo.getInstance().getDate();
+        String pattern = "\\d{4}-11-11.";
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(date);
+        boolean bool = m.matches();
+        return bool;
     }
+
+    /**
+     * to get the discount value in doubleElevenStrategy
+     * Fifty percent off on the total price
+     * @param order the order to get information
+     * @return the discount in doubleElevenStrategy
+     */
 
     @Override
     public double getDiscount(Order order){
-        //TODO
-        if(isValid(order)){
-            return 0;
+        if(isValid()){
+            return (order.getTotalPrice())/2;
         }
         return 0;
     }
