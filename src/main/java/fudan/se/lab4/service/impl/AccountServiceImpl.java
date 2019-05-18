@@ -23,6 +23,7 @@ public class AccountServiceImpl implements AccountService {
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
     private static boolean loginStatus = false;
     private UserRepositoryImpl userRepository = new UserRepositoryImpl();
+    private LanguageServiceImpl languageService = LanguageServiceImpl.getInstance();
 
     /**
      * Provides the log in function of the user
@@ -114,10 +115,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public boolean checkStatus() {
         if (loginStatus) {
-            System.out.println("User has logged in");
+            System.out.println(languageService.getValue(InfoConstant.USER_HAS_LOGED_IN));
             return true;
         }
-        System.out.println("please login");
+        System.out.println(languageService.getValue(InfoConstant.PLEASE_LOGIN));
         return false;
     }
 }
