@@ -7,6 +7,8 @@ public class UIConstant_cn {
     public static final String USER_LOGIN_FAILED = "用户登录失败";
     public static final String USERNAME_OR_PASS_ERROR = "用户名或密码错误";
 
+    public static final String USER_HAS_LOGED_IN = "用户已登录";
+    public static final String PLEASE_LOGIN= "请先登录";
 
     public static final String DISCOUNT_CAPPUCCINO = "卡布奇诺第二杯半价，折扣 %d$";
     public static final String DISCOUNT_TEA = "茶买3送1，折扣 %d$";

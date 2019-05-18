@@ -33,6 +33,13 @@ public class InfoConstant {
     public static final String INGREDIENTS_NULL = "The ingredients are null";
     public static final String INGREDIENT_NULL = "One of the ingredients is null";
     public static final String INGREDIENT_NAME_ILLEGAL = "The ingredient name is illegal";
+
+    public static final String USER_HAS_LOGED_IN = "USER_HAS_LOGED_IN";
+    public static final String PLEASE_LOGIN= "PLEASE_LOGIN";
+
+
+
+
     public static final String DISCOUNT_CAPPUCCINO = "Cappuccino 第二杯半价，折扣 %d$";
     public static final String DISCOUNT_TEA = "Tea 买3送1，折扣 %d$";
     public static final String DISCOUNT_ESPRESSO = "大杯Espresso 2杯8折，折扣 %d$";

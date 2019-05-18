@@ -24,13 +24,14 @@ public class LanguageServiceImpl implements LanguageService {
         InputStream inputStream = MenuServiceImpl.class.getClassLoader().getResourceAsStream("application-language.properties");
         Properties properties = new Properties();
         try {
-            properties.load(inputStream);
-            properties.forEach((key,value)->languageReposity.put(key.toString(),value.toString()));
+            if(inputStream != null) {
+                properties.load(inputStream);
+                properties.forEach((key, value) -> languageReposity.put(key.toString(), value.toString()));
+            }
         } catch (IOException e) {
             logger.info(InfoConstant.FILE_NOT_FOUND);
         }
     }
-
 
     private static LanguageServiceImpl obj;
 
