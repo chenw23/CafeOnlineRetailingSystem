@@ -7,6 +7,7 @@ import fudan.se.lab4.util.FileUtil;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -18,8 +19,9 @@ public class LanguageServiceImpl implements LanguageService {
     private Class languageProvider;
     private static Map<String,String> languageReposity = new HashMap();
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
+
     static {
-        InputStream inputStream = CurrencyServiceImpl.class.getClassLoader().getResourceAsStream("application-language.properties");
+        InputStream inputStream = MenuServiceImpl.class.getClassLoader().getResourceAsStream("application-language.properties");
         Properties properties = new Properties();
         try {
             properties.load(inputStream);
@@ -37,6 +39,8 @@ public class LanguageServiceImpl implements LanguageService {
      * the default language is English.
      */
     private LanguageServiceImpl(){
+        String defaultLang = "English";
+        updateLanguage(defaultLang);
     }
 
 
@@ -55,20 +59,19 @@ public class LanguageServiceImpl implements LanguageService {
         try{
             languageProvider = Class.forName(FileConstant.UI_CONSTANT_PATH + languageReposity.get(language));
         } catch (ClassNotFoundException e) {
-            logger.info(InfoConstant.FILE_NOT_FOUND);
+            logger.info(MessageFormat.
+                    format(InfoConstant.CLASS_NOT_FOUND,FileConstant.UI_CONSTANT_PATH +languageReposity.get(language)));
         }
     }
 
     public String getValue(String name){
 
-        String result = InfoConstant.LANGUAGE_ERROR;
+        String result = MessageFormat.format(InfoConstant.LANGUAGE_ERROR,name);
         try{
             Field f = languageProvider.getField(name);
             result = f.get(languageProvider).toString();
-        }catch (NoSuchFieldException e){
-            logger.info(InfoConstant.FILE_NOT_FOUND);
-        } catch (IllegalAccessException e) {
-            logger.info(e.getMessage());
+        }catch (NoSuchFieldException | IllegalAccessException e){
+            logger.info(result);
         }
         return result;
     }

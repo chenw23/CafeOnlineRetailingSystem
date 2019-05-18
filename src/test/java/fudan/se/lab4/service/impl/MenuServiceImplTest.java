@@ -1,6 +1,5 @@
 package fudan.se.lab4.service.impl;
 
-import fudan.se.lab4.entity.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,13 +11,13 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MenuServiceTest {
+public class MenuServiceImplTest {
 
-    private MenuService obj;
+    private MenuServiceImpl obj;
 
     @Before
     public void setUp() {
-        obj = MenuService.getInstance();
+        obj = MenuServiceImpl.getInstance();
     }
 
     @After

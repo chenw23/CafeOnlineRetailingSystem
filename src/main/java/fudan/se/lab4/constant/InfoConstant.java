@@ -10,7 +10,9 @@ public class InfoConstant {
     public static final String ENTITY_EXIST = "{0} already exists, name: {1}";
     public static final String ENTITY_NOT_FOUND = "Object not found, name: {0}";
     public static final String FILE_CANNOT_BE_DIR = "Failed to create file, {0} is not a valid name";
-    public static final String FILE_NOT_FOUND = "The property file not found.";
+    public static final String FILE_NOT_FOUND = "The property file {0} not found.";
+    public static final String CLASS_NOT_FOUND = "The class {0} not found.";
+    public static final String LANGUAGE_ERROR = "The information {0} not provided";
     public static final String CREATING_PARENT_DIR = "Creating parent directory ...";
     public static final String FAILED_CREAT_DIR = "Failed to create target directory";
     public static final String FAILED_TO_CREATE_FILE = "Failed to create file: {0}";

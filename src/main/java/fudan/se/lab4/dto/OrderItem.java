@@ -1,7 +1,7 @@
 package fudan.se.lab4.dto;
 
 import fudan.se.lab4.constant.InfoConstant;
-import fudan.se.lab4.service.impl.MenuService;
+import fudan.se.lab4.service.impl.MenuServiceImpl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -73,11 +73,11 @@ public class OrderItem implements Serializable {
         assert ingredients != null : InfoConstant.INGREDIENTS_NULL;
         double ingredietnTotalPrice = ingredients.stream().map(ingredient -> {
                     assert ingredient != null : InfoConstant.INGREDIENT_NULL;
-                    return MenuService.getInstance().getPrice(currency,ingredient.getName()) * ingredient.getNumber();
+                    return MenuServiceImpl.getInstance().getPrice(currency,ingredient.getName()) * ingredient.getNumber();
                 })
                 .mapToDouble(Double::doubleValue)
                 .sum();
-        drinkPrice = MenuService.getInstance().getPrice(currency,this.name) + size2price(getSize()) + ingredietnTotalPrice;
+        drinkPrice = MenuServiceImpl.getInstance().getPrice(currency,this.name) + size2price(getSize()) + ingredietnTotalPrice;
         return drinkPrice;
     }
 }

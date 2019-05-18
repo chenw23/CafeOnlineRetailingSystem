@@ -1,6 +1,6 @@
 package fudan.se.lab4.service;
 
-public interface CurrencyService {
+public interface MenuService {
     /**
      *
      * @param menuItem the item menu.
