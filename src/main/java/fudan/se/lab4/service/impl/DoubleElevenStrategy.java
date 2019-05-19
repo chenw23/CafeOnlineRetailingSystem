@@ -35,12 +35,14 @@ public class DoubleElevenStrategy implements MarketingStrategy {
     @Override
     public PaymentInfo getDiscount(Order order){
         double totalPrice = order.getTotalPrice();
+        ArrayList<String> msgs = new ArrayList<>();
         if(isValid()){
             double discount = totalPrice/2;
-            ArrayList<String> msgs = new ArrayList<>();
-            msgs.add(String.format(InfoConstant.DISCOUNT_Double_Eleven,discount));
+            LanguageServiceImpl obj = LanguageServiceImpl.getInstance();
+            msgs.add(String.format(obj.getValue(InfoConstant.CONS_DOUBLE_ELEVEN),discount));
             return new PaymentInfo(totalPrice,discount,totalPrice-discount,msgs);
         }
-        return new PaymentInfo(totalPrice,0,totalPrice,null);
+        msgs.add("");
+        return new PaymentInfo(totalPrice,0,totalPrice,msgs);
     }
 }

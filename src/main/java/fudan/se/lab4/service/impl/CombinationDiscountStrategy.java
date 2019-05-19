@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class CombinationDiscountStrategy implements MarketingStrategy {
     private ArrayList<String> msgs;
+    LanguageServiceImpl obj;
     /**
      * @param order the order contains the items purchased
      * @return the total discount of the combination
@@ -14,6 +15,8 @@ public class CombinationDiscountStrategy implements MarketingStrategy {
     @Override
     public PaymentInfo getDiscount(Order order){
         msgs = new ArrayList<>();
+        obj = LanguageServiceImpl.getInstance();
+
         double totalPrice = order.getTotalPrice();
         double discount =  discountOfLargeEspresso(order, msgs) + discountOfTea(order, msgs)
                 + discountOfCappuccino(order, msgs);
@@ -36,7 +39,7 @@ public class CombinationDiscountStrategy implements MarketingStrategy {
         count = count / 2;
         int discount = count * 8;//(countEspresso/2)*0.2*20*2;
         if (count != 0)
-            msgs.add(String.format(InfoConstant.DISCOUNT_ESPRESSO, discount));
+            msgs.add(String.format(obj.getValue(InfoConstant.CONS_ESPRESSO), discount));
         return discount;
     }
 
@@ -64,7 +67,7 @@ public class CombinationDiscountStrategy implements MarketingStrategy {
         int freeNumber = (countGreenTea + countReaTea) / 4;
         int discount = freeNumber > countReaTea ? (countReaTea * 18 + (freeNumber - countReaTea) * 16) : freeNumber * 18;
         if (freeNumber != 0)
-            msgs.add(String.format(InfoConstant.DISCOUNT_TEA, discount));
+            msgs.add(String.format(obj.getValue(InfoConstant.CONS_TEA), discount));
         return discount;
     }
 
@@ -86,7 +89,7 @@ public class CombinationDiscountStrategy implements MarketingStrategy {
         countCappuccino = countCappuccino / 2;
         int discount = countCappuccino * 11;
         if (countCappuccino != 0)
-            msgs.add(String.format(InfoConstant.DISCOUNT_CAPPUCCINO, discount));
+            msgs.add(String.format(obj.getValue(InfoConstant.CONS_CAPPUCCINO), discount));
         return discount;
     }
 
