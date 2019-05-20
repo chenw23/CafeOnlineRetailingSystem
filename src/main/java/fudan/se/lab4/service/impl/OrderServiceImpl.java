@@ -20,8 +20,13 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public PaymentInfo pay(Order order) {
-        //TODO:choose the best strategy and apply it to the order.
           checkNull(order);
+          setStrategies();
+
+          if(strategies.size()==0){
+              return new PaymentInfo(order.getTotalPrice(),0,order.getTotalPrice(),new ArrayList<>());
+          }
+
           MarketingStrategy bestStrategy = strategies.get(0);
           int discount = 0;
           for (MarketingStrategy marketingStrategy: strategies){
@@ -32,8 +37,11 @@ public class OrderServiceImpl implements OrderService {
           return bestStrategy.getDiscount(order) ;
     }
 
-    public void setStrategies(ArrayList<MarketingStrategy> strategies){
-        this.strategies = strategies;
+    public void setStrategies(){
+        strategies.add(new DoubleElevenStrategy());
+        strategies.add(new TeaAndCoffee15OffStrategy());
+        strategies.add(new FullDiscountStrategy());
+        strategies.add(new CombinationDiscountStrategy());
     }
 
 
