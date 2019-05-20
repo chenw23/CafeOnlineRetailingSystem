@@ -23,14 +23,20 @@ public class TeaAndCoffee15OffStrategyTest {
 
     @Before
     public void setUp() {
-        obj = new TeaAndCoffee15OffStrategy();
         ingredients = TestHelper.getIngredients();
+        obj = new TeaAndCoffee15OffStrategy();
     }
 
     @After
     public void tearDown() {
-        obj = null;
         ingredients = null;
+        obj = null;
+    }
+
+
+    @Test
+    public void testGetDiscountInHKD(){
+        assertEquals(obj.getDiscount(getOrder("hkd")).getDiscount(), 9.27, 0.001);
     }
 
     @Test
@@ -38,16 +44,11 @@ public class TeaAndCoffee15OffStrategyTest {
         assertEquals(obj.getDiscount(getOrder("cny")).getDiscount(), 8.28, 0.001);
     }
 
-    @Test
-    public void testGetDiscountInHKD(){
-        assertEquals(obj.getDiscount(getOrder("hkd")).getDiscount(), 9.27, 0.001);
-    }
-
     public Order getOrder(String currency){
         //before discount{rmb:32.6 + 22.6 hkd:36.4 + 25.4}
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 3));
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 1));
+        orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 3));
         return TestHelper.getOrder(currency,orderItems);
     }
 }
