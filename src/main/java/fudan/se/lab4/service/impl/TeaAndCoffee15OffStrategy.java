@@ -7,6 +7,7 @@ import fudan.se.lab4.dto.PaymentInfo;
 import fudan.se.lab4.service.MarketingStrategy;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class TeaAndCoffee15OffStrategy implements MarketingStrategy {
     /**

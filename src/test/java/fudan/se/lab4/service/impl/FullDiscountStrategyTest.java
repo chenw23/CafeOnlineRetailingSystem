@@ -38,7 +38,7 @@ public class FullDiscountStrategyTest {
 
     @Test
     public void testGetDiscountInRMB(){
-        assertEquals(obj.getDiscount(getOrder("rmb")).getDiscount(), 30.0, 0.01);
+        assertEquals(obj.getDiscount(getOrder("cny")).getDiscount(), 30.0, 0.01);
     }
 
     @Test

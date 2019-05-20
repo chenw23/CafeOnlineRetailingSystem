@@ -41,9 +41,9 @@ public class DoubleElevenStrategyTest {
     public void testGetDiscountInRMB(){
         //The test is ugly. When the date is 11-11, the strategy is ok.
         if(isDoubleEleven()){
-            assertEquals(14.2,obj.getDiscount(getOrder("rmb")).getDiscount(),0.001);
+            assertEquals(14.2,obj.getDiscount(getOrder("cny")).getDiscount(),0.001);
         }else{
-            assertEquals(0,obj.getDiscount(getOrder("rmb")).getDiscount(),0.001);
+            assertEquals(0,obj.getDiscount(getOrder("cny")).getDiscount(),0.001);
         }
     }
 
@@ -58,7 +58,7 @@ public class DoubleElevenStrategyTest {
     }
 
     public Order getOrder(String currency){
-        //rmb:28.4 hkd:31.8
+        //before discount:{rmb:28.4 hkd:31.8}
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new Ingredient(InfoConstant.NAME_MILK,2));
         ArrayList<OrderItem> orderItems = new ArrayList<>();
