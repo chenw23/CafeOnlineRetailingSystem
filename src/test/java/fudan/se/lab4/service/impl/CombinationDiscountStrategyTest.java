@@ -45,7 +45,6 @@ public class CombinationDiscountStrategyTest {
 
     @Test
     public void testGetDiscountInHKD(){
-
         assertEquals(obj.getDiscount(getOrder("hkd")).getDiscount(), 32.5, 0.001);
     }
 
