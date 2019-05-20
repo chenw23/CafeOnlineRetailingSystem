@@ -56,6 +56,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
     public double getPrice(String currency,String menuItem){
+        assert menu.get(currency) != null:InfoConstant.CURRENCY_ERROR;
+        assert menu.get(currency).get(menuItem) != null:InfoConstant.MENUITEM_ERROR;
         return menu.get(currency).get(menuItem);
     }
 }

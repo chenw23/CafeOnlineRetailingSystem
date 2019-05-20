@@ -1,5 +1,6 @@
 package fudan.se.lab4.service.impl;
 
+import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.constant.UIConstant_cn;
 import fudan.se.lab4.constant.UIConstant_en;
 import org.junit.After;
@@ -30,13 +31,13 @@ public class LanguageServiceImplTest {
     public void testGetValueInChinese(){
         String language = "Chinese";
         obj.updateLanguage(language);
-        assertEquals(obj.getValue("USERNAME_OR_PASS_ERROR"), UIConstant_cn.USERNAME_OR_PASS_ERROR);
+        assertEquals(obj.getValue(InfoConstant.USERNAME_OR_PASS_ERROR), UIConstant_cn.USERNAME_OR_PASS_ERROR);
     }
 
     @Test
     public void testGetValueInEnglish(){
         String language = "English";
         obj.updateLanguage(language);
-        assertEquals(UIConstant_en.USERNAME_OR_PASS_ERROR,obj.getValue("USERNAME_OR_PASS_ERROR"));
+        assertEquals(UIConstant_en.USERNAME_OR_PASS_ERROR,obj.getValue(InfoConstant.USERNAME_OR_PASS_ERROR));
     }
 }

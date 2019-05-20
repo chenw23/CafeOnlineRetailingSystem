@@ -27,7 +27,7 @@ public class MenuServiceImplTest {
 
     @Test
     public void testGetPriceInRMB(){
-        double rmbPrice = obj.getPrice("rmb","Cappuccino");
+        double rmbPrice = obj.getPrice("cny","Cappuccino");
         assertEquals(rmbPrice,22,0.001);
     }
 
