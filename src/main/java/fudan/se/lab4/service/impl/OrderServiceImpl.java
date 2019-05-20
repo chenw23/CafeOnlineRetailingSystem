@@ -23,18 +23,21 @@ public class OrderServiceImpl implements OrderService {
           checkNull(order);
 
           if(strategies.size()==0){
-              return new PaymentInfo(order.getTotalPrice(),0,order.getTotalPrice(),new ArrayList<>());
+              ArrayList<String> msg = new ArrayList<>();
+              msg.add("");
+              return new PaymentInfo(order.getTotalPrice(),0,order.getTotalPrice(),msg);
           }
 
-          MarketingStrategy bestStrategy = strategies.get(0);
-          double discount = 0;
+          PaymentInfo best = strategies.get(0).getDiscount(order);
+
+          PaymentInfo paymentInfo;
           for (MarketingStrategy marketingStrategy: strategies){
-              if(marketingStrategy.getDiscount(order).getDiscount()>discount){
-                  bestStrategy = marketingStrategy;
-                  discount = marketingStrategy.getDiscount(order).getDiscount();
+              paymentInfo = marketingStrategy.getDiscount(order);
+              if(paymentInfo.getDiscount() > best.getDiscount()){
+                  best = paymentInfo;
               }
           }
-          return bestStrategy.getDiscount(order) ;
+          return best ;
     }
 
     public void setStrategies(ArrayList<MarketingStrategy> strategies){
