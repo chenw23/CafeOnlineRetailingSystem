@@ -27,10 +27,11 @@ public class OrderServiceImpl implements OrderService {
           }
 
           MarketingStrategy bestStrategy = strategies.get(0);
-          int discount = 0;
+          double discount = 0;
           for (MarketingStrategy marketingStrategy: strategies){
               if(marketingStrategy.getDiscount(order).getDiscount()>discount){
                   bestStrategy = marketingStrategy;
+                  discount = marketingStrategy.getDiscount(order).getDiscount();
               }
           }
           return bestStrategy.getDiscount(order) ;
