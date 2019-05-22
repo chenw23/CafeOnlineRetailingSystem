@@ -1,14 +1,23 @@
 package fudan.se.lab4.dto;
 
 import fudan.se.lab4.constant.InfoConstant;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.util.List;
 
+@ApiModel
 public class Order implements Serializable {
     private static final long serialVersionUID = 6442456165785725948L;
+
+    @ApiModelProperty(notes="order ID",required = true,dataType = "String")
     private String id;
+
+    @ApiModelProperty(notes="order items",required = true)
     private List<OrderItem> orderItems;
+
+    @ApiModelProperty(notes = "the currency",required = true,dataType = "String")
     private String currency;
 
     public Order(String id,String currency, List<OrderItem> orderItems) {

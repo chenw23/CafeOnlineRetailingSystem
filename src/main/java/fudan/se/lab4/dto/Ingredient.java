@@ -1,6 +1,8 @@
 package fudan.se.lab4.dto;
 
 import fudan.se.lab4.constant.InfoConstant;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
@@ -13,9 +15,14 @@ import java.io.Serializable;
  * The dto package defines the classes prototypes that will be used to transmit data between the front end and the back end.
  * Therefore, any concrete classes should created in this section should not lie in the dto package
  */
+@ApiModel
 public class Ingredient implements Serializable {
     private static final long serialVersionUID = 7600387145905184435L;
+
+    @ApiModelProperty(notes="order item name",required = true,dataType = "String")
     private String name;
+
+    @ApiModelProperty(notes="ingredient number",required = true,dataType = "int")
     private int number;
 
     public Ingredient(String name, int number) {

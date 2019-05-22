@@ -2,13 +2,17 @@ package fudan.se.lab4.dto;
 
 import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.service.impl.MenuServiceImpl;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.util.List;
-
+@ApiModel
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = -2451304424331432011L;
+    @ApiModelProperty(notes="order item name",required = true,dataType = "String")
     private String name;
+    @ApiModelProperty(notes="item size",required = true,dataType = "int")
     private int size;
     private List<Ingredient> ingredients;
 
