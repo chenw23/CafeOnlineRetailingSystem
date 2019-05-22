@@ -34,7 +34,7 @@ public class DoubleElevenStrategy implements MarketingStrategy {
 
     @Override
     public PaymentInfo getDiscount(Order order){
-        double totalPrice = order.getTotalPrice();
+        double totalPrice = order.totalPrice();
         ArrayList<String> msgs = new ArrayList<>();
         if(isValid()){
             double discount = totalPrice/2;

@@ -25,8 +25,7 @@ public class OrderController {
     private OrderServiceImpl orderServiceImpl;
 
     @RequestMapping(value="/add",method= RequestMethod.POST,produces = "application/json")
-    @ApiOperation(value = "add a order and return the payment information.")
-    @ApiImplicitParam(name = "order",value = "the submitted order",dataType = "Order",required = true,paramType = "body")
+    @ApiOperation(value = "submit a order.",response = ResponseEntity.class)
     public ResponseEntity<PaymentInfo> order(@RequestBody @Valid Order order) {
         ArrayList<MarketingStrategy> strategies = new ArrayList<>();
         strategies.add(new DoubleElevenStrategy());

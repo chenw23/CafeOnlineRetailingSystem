@@ -22,7 +22,7 @@ public class OrderTest {
     public void testGetTotalPriceWithOrderItemsNull() {
         Order order = getOrder(null);
         try {
-            order.getTotalPrice();
+            order.totalPrice();
         } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.ORDER_ITEMS_NULL);
         }
@@ -37,7 +37,7 @@ public class OrderTest {
         orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA, null, 2));
         Order order = getOrder(orderItems);
         try {
-            order.getTotalPrice();
+            order.totalPrice();
         } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.INGREDIENTS_NULL);
         }
@@ -53,7 +53,7 @@ public class OrderTest {
         ingredients.add(new Ingredient(InfoConstant.NAME_CHOCOLATE, 2));
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 2));
         Order order = getOrder(orderItems);
-        assertEquals(order.getTotalPrice(), 28.4, 0.01);
+        assertEquals(order.totalPrice(), 28.4, 0.01);
     }
 
     /**
@@ -68,7 +68,7 @@ public class OrderTest {
         orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA, ingredients, 4));
         Order order = getOrder(orderItems);
         try {
-            order.getTotalPrice();
+            order.totalPrice();
         } catch (RuntimeException e) {
             assertEquals(e.getMessage(), InfoConstant.CUP_SIZE_ERROR);
         }

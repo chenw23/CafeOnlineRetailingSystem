@@ -14,7 +14,7 @@ public class Order implements Serializable {
     @ApiModelProperty(notes="order ID",required = true,dataType = "String")
     private String id;
 
-    @ApiModelProperty(notes="order items",required = true)
+    @ApiModelProperty(notes="order items",required = true,dataType = "OrderItem")
     private List<OrderItem> orderItems;
 
     @ApiModelProperty(notes = "the currency",required = true,dataType = "String")
@@ -52,7 +52,7 @@ public class Order implements Serializable {
         this.orderItems = orderItems;
     }
 
-    public double getTotalPrice() {
+    public double totalPrice() {
 
         assert orderItems != null : InfoConstant.ORDER_ITEMS_NULL;
         return orderItems.stream().map(orderItem -> {

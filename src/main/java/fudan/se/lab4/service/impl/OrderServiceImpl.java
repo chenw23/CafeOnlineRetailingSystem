@@ -25,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
           if(strategies.size()==0){
               ArrayList<String> msg = new ArrayList<>();
               msg.add("");
-              return new PaymentInfo(order.getTotalPrice(),0,order.getTotalPrice(),msg);
+              return new PaymentInfo(order.totalPrice(),0,order.totalPrice(),msg);
           }
 
           PaymentInfo best = strategies.get(0).getDiscount(order);

@@ -27,7 +27,7 @@ public class TeaAndCoffee15OffStrategy implements MarketingStrategy {
     @Override
     public PaymentInfo getDiscount(Order order)
     {
-        double totalPrice =  order.getTotalPrice();
+        double totalPrice =  order.totalPrice();
         ArrayList<String> msgs = new ArrayList<>();
         if (isValid(order)){
             double discount = totalPrice*0.15;

@@ -19,7 +19,7 @@ public class CombinationDiscountStrategy implements MarketingStrategy {
         languageService = LanguageServiceImpl.getInstance();
         menuService = MenuServiceImpl.getInstance();
 
-        double totalPrice = order.getTotalPrice();
+        double totalPrice = order.totalPrice();
         double discount =  discountOfLargeEspresso(order, msgs) + discountOfTea(order, msgs)
                 + discountOfCappuccino(order, msgs);
         return new PaymentInfo(totalPrice,discount,totalPrice-discount,msgs);

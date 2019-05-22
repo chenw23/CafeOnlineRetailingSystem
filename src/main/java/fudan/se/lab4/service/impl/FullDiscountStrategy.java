@@ -15,7 +15,7 @@ public class FullDiscountStrategy implements MarketingStrategy {
      */
     @Override
     public PaymentInfo getDiscount(Order order){
-        double totalPrice = order.getTotalPrice();
+        double totalPrice = order.totalPrice();
         ArrayList<String> msgs = new ArrayList<>();
         if(totalPrice < 100){
             msgs.add("");

@@ -10,10 +10,14 @@ import java.util.List;
 @ApiModel
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = -2451304424331432011L;
+
     @ApiModelProperty(notes="order item name",required = true,dataType = "String")
     private String name;
+
     @ApiModelProperty(notes="item size",required = true,dataType = "int")
     private int size;
+
+    @ApiModelProperty(notes="item size",required = true,dataType = "Ingredient")
     private List<Ingredient> ingredients;
 
     public OrderItem(String name, List<Ingredient> ingredients, int size) {
