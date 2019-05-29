@@ -47,6 +47,8 @@ public class InfoConstant {
     public static final String CONS_TEA = "DISCOUNT_TEA";
     public static final String CONS_ESPRESSO = "DISCOUNT_ESPRESSO";
 
+    public static final String NAME_CNY = "cny";
+    public static final String NAME_HKD = "hkd";
     public static final String NAME_ESPRESSO = "Espresso";
     public static final String NAME_REDTEA = "RedTea";
     public static final String NAME_GREENTEA = "GreenTea";
@@ -55,4 +57,6 @@ public class InfoConstant {
     public static final String NAME_CHOCOLATE = "Chocolate";
     public static final String NAME_CREAM = "Cream";
     public static final String NAME_SUGAR = "Sugar";
+    public static final String NAME_LATTE = "Latte";
+    public static final String NAME_COCONUTMILK = "CoconutMilk";
 }

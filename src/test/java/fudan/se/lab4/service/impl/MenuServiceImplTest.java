@@ -1,5 +1,6 @@
 package fudan.se.lab4.service.impl;
 
+import fudan.se.lab4.constant.InfoConstant;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,13 +28,13 @@ public class MenuServiceImplTest {
 
     @Test
     public void testGetPriceInRMB(){
-        double rmbPrice = obj.getPrice("cny","Cappuccino");
+        double rmbPrice = obj.getPrice(InfoConstant.NAME_CNY, InfoConstant.NAME_CAPPUCCINO);
         assertEquals(rmbPrice,22,0.001);
     }
 
     @Test
     public void testGetPriceInHKD(){
-        double hkdPrice = obj.getPrice("hkd","Cappuccino");
+        double hkdPrice = obj.getPrice(InfoConstant.NAME_HKD,InfoConstant.NAME_CAPPUCCINO);
         assertEquals(hkdPrice,25,0.001);
     }
 }

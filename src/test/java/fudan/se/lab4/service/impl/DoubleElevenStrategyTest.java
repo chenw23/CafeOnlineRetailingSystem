@@ -41,9 +41,9 @@ public class DoubleElevenStrategyTest {
     public void testGetDiscountInRMB(){
         //The test is ugly. When the date is 11-11, the strategy is ok.
         if(isDoubleEleven()){
-            assertEquals(14.2,obj.getDiscount(getOrder("cny")).getDiscount(),0.001);
+            assertEquals(14.2,obj.getDiscount(getOrder(InfoConstant.NAME_CNY)).getDiscount(),0.001);
         }else{
-            assertEquals(0,obj.getDiscount(getOrder("cny")).getDiscount(),0.001);
+            assertEquals(0,obj.getDiscount(getOrder(InfoConstant.NAME_CNY)).getDiscount(),0.001);
         }
     }
 
@@ -51,9 +51,9 @@ public class DoubleElevenStrategyTest {
     public void testGetDiscountInHKD(){
         //The test is ugly. When the date is 11-11, the strategy is ok.
         if(isDoubleEleven()){
-            assertEquals(15.9,obj.getDiscount(getOrder("hkd")).getDiscount(),0.001);
+            assertEquals(15.9,obj.getDiscount(getOrder(InfoConstant.NAME_HKD)).getDiscount(),0.001);
         }else{
-            assertEquals(0,obj.getDiscount(getOrder("hkd")).getDiscount(),0.001);
+            assertEquals(0,obj.getDiscount(getOrder(InfoConstant.NAME_HKD)).getDiscount(),0.001);
         }
     }
 

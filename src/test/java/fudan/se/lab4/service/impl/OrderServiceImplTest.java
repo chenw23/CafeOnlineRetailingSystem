@@ -22,7 +22,7 @@ public class OrderServiceImplTest {
     private String defaultCurr;
     @Before
     public void setUp() {
-        defaultCurr = "cny";
+        defaultCurr = InfoConstant.NAME_CNY;
         ingredients = TestHelper.getIngredients();
         orderService = new OrderServiceImpl();
         ArrayList<MarketingStrategy> strategies = new ArrayList<>();
@@ -162,7 +162,6 @@ public class OrderServiceImplTest {
      */
     @Test
     public void testPayWithIngredientOtherName() {
-        String defaultCurr = "cny";
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new Ingredient(InfoConstant.NAME_SUGAR, 2));
@@ -202,19 +201,6 @@ public class OrderServiceImplTest {
         assertEquals(paymentInfo.getDiscount(), 11.0, 0.01);
     }
 
-    /**
-     * check the method pay when there
-     * are three large cups of Espresso
-     */
-    @Test
-    public void testPayWithCombinationOfLargeEspresso() {
-        ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new OrderItem(InfoConstant.NAME_ESPRESSO, ingredients, 3));
-        orderItems.add(new OrderItem(InfoConstant.NAME_ESPRESSO, ingredients, 3));
-        orderItems.add(new OrderItem(InfoConstant.NAME_ESPRESSO, ingredients, 3));
-        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
-        assertEquals(paymentInfo.getDiscount(), 8.0, 0.01);
-    }
 
     /**
      * check the method pay when there
@@ -224,7 +210,6 @@ public class OrderServiceImplTest {
     public void testPayWithCombinationOfOrderItemCappuccino() {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 3));
-        orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA, ingredients, 3));
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 1));
         PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
         assertEquals(paymentInfo.getDiscount(), 11.0, 0.01);

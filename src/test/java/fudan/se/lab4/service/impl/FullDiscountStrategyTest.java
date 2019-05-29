@@ -38,12 +38,12 @@ public class FullDiscountStrategyTest {
 
     @Test
     public void testGetDiscountInRMB(){
-        assertEquals(obj.getDiscount(getOrder("cny")).getDiscount(), 30.0, 0.01);
+        assertEquals(obj.getDiscount(getOrder(InfoConstant.NAME_CNY)).getDiscount(), 30.0, 0.01);
     }
 
     @Test
     public void testGetDiscountInHKD(){
-        assertEquals(obj.getDiscount(getOrder("hkd")).getDiscount(), 30.0, 0.01);
+        assertEquals(obj.getDiscount(getOrder(InfoConstant.NAME_HKD)).getDiscount(), 60.0, 0.01);
     }
 
     private Order getOrder(String currency){
@@ -53,6 +53,8 @@ public class FullDiscountStrategyTest {
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 3));
         orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA, ingredients, 3));
         orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA, ingredients, 1));
+        orderItems.add(new OrderItem(InfoConstant.NAME_LATTE, ingredients, 1));
+        orderItems.add(new OrderItem(InfoConstant.NAME_COCONUTMILK, ingredients, 1));
         return TestHelper.getOrder(currency,orderItems);
     }
 
