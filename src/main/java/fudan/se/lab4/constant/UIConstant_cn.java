@@ -6,7 +6,7 @@ public class UIConstant_cn {
     public static final String USER_SIGNUP_SUCCESSFULLY = "用户注册成功,用户名: {0}";
     public static final String USER_LOGIN_SUCCESSFULLY = "用户登录成功,用户名: {0}";
     public static final String USER_LOGIN_FAILED = "用户登录失败";
-    public static final String PLEASE_LOGIN= "请先登录";
+    public static final String PLEASE_LOGIN = "请先登录";
     public static final String USER_HAS_LOGED_IN = "用户已登录";
 
     public static final String DISCOUNT_FULL_REDUCTION = "所有商品满100$省30$,折扣 %f";

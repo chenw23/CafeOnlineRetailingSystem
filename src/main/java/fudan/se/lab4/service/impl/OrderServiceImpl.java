@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-
     private ArrayList<MarketingStrategy> strategies = new ArrayList<>();
 
     /**
@@ -20,31 +19,29 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public PaymentInfo pay(Order order) {
-          checkNull(order);
+        checkNull(order);
 
-          if(strategies.size()==0){
-              ArrayList<String> msg = new ArrayList<>();
-              msg.add("");
-              return new PaymentInfo(order.totalPrice(),0,order.totalPrice(),msg);
-          }
+        if (strategies.size() == 0) {
+            ArrayList<String> msg = new ArrayList<>();
+            msg.add("");
+            return new PaymentInfo(order.totalPrice(), 0, order.totalPrice(), msg);
+        }
 
-          PaymentInfo best = strategies.get(0).getDiscount(order);
+        PaymentInfo best = strategies.get(0).getDiscount(order);
 
-          PaymentInfo paymentInfo;
-          for (MarketingStrategy marketingStrategy: strategies){
-              paymentInfo = marketingStrategy.getDiscount(order);
-              if(paymentInfo.getDiscount() > best.getDiscount()){
-                  best = paymentInfo;
-              }
-          }
-          return best ;
+        PaymentInfo paymentInfo;
+        for (MarketingStrategy marketingStrategy : strategies) {
+            paymentInfo = marketingStrategy.getDiscount(order);
+            if (paymentInfo.getDiscount() > best.getDiscount()) {
+                best = paymentInfo;
+            }
+        }
+        return best;
     }
 
-    public void setStrategies(ArrayList<MarketingStrategy> strategies){
+    public void setStrategies(ArrayList<MarketingStrategy> strategies) {
         this.strategies = strategies;
     }
-
-
 
     private void checkNull(Order order) {
         assert order != null : InfoConstant.ORDER_NULL;

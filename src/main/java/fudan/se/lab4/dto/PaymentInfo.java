@@ -17,7 +17,8 @@ public class PaymentInfo implements Serializable {
         this.msgs = msgs;
     }
 
-    public PaymentInfo() {}
+    public PaymentInfo() {
+    }
 
     public double getPrice() {
         return price;

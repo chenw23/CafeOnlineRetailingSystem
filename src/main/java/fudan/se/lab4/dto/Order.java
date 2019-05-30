@@ -11,22 +11,23 @@ import java.util.List;
 public class Order implements Serializable {
     private static final long serialVersionUID = 6442456165785725948L;
 
-    @ApiModelProperty(notes="order ID",required = true,dataType = "String")
+    @ApiModelProperty(notes = "order ID", required = true, dataType = "String")
     private String id;
 
-    @ApiModelProperty(notes="order items",required = true,dataType = "OrderItem")
+    @ApiModelProperty(notes = "order items", required = true, dataType = "OrderItem")
     private List<OrderItem> orderItems;
 
-    @ApiModelProperty(notes = "the currency",required = true,dataType = "String")
+    @ApiModelProperty(notes = "the currency", required = true, dataType = "String")
     private String currency;
 
-    public Order(String id,String currency, List<OrderItem> orderItems) {
+    public Order(String id, String currency, List<OrderItem> orderItems) {
         this.currency = currency;
         this.id = id;
         this.orderItems = orderItems;
     }
 
-    public Order() {}
+    public Order() {
+    }
 
     public String getCurrency() {
         return currency;
@@ -56,9 +57,9 @@ public class Order implements Serializable {
 
         assert orderItems != null : InfoConstant.ORDER_ITEMS_NULL;
         return orderItems.stream().map(orderItem -> {
-                    assert orderItem != null : InfoConstant.ORDER_ITEM_NULL;
-                    return orderItem.cost(currency);
-                })
+            assert orderItem != null : InfoConstant.ORDER_ITEM_NULL;
+            return orderItem.cost(currency);
+        })
                 .mapToDouble(Double::doubleValue)
                 .sum();
     }

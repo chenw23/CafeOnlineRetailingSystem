@@ -7,17 +7,18 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.util.List;
+
 @ApiModel
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = -2451304424331432011L;
 
-    @ApiModelProperty(notes="order item name",required = true,dataType = "String")
+    @ApiModelProperty(notes = "order item name", required = true, dataType = "String")
     private String name;
 
-    @ApiModelProperty(notes="item size",required = true,dataType = "int")
+    @ApiModelProperty(notes = "item size", required = true, dataType = "int")
     private int size;
 
-    @ApiModelProperty(notes="item size",required = true,dataType = "Ingredient")
+    @ApiModelProperty(notes = "item size", required = true, dataType = "Ingredient")
     private List<Ingredient> ingredients;
 
     public OrderItem(String name, List<Ingredient> ingredients, int size) {
@@ -26,7 +27,8 @@ public class OrderItem implements Serializable {
         this.size = size;
     }
 
-    public OrderItem() {}
+    public OrderItem() {
+    }
 
     public String getName() {
         return name;
@@ -73,6 +75,7 @@ public class OrderItem implements Serializable {
     /**
      * The price of each orderItem consists of three parts,
      * the price of cup, the price of ingredients, the price of drink.
+     *
      * @param currency the currency
      * @return the price
      */
@@ -80,12 +83,12 @@ public class OrderItem implements Serializable {
         double drinkPrice;
         assert ingredients != null : InfoConstant.INGREDIENTS_NULL;
         double ingredietnTotalPrice = ingredients.stream().map(ingredient -> {
-                    assert ingredient != null : InfoConstant.INGREDIENT_NULL;
-                    return MenuServiceImpl.getInstance().getPrice(currency,ingredient.getName()) * ingredient.getNumber();
-                })
+            assert ingredient != null : InfoConstant.INGREDIENT_NULL;
+            return MenuServiceImpl.getInstance().getPrice(currency, ingredient.getName()) * ingredient.getNumber();
+        })
                 .mapToDouble(Double::doubleValue)
                 .sum();
-        drinkPrice = MenuServiceImpl.getInstance().getPrice(currency,this.name) + size2price(getSize()) + ingredietnTotalPrice;
+        drinkPrice = MenuServiceImpl.getInstance().getPrice(currency, this.name) + size2price(getSize()) + ingredietnTotalPrice;
         return drinkPrice;
     }
 }

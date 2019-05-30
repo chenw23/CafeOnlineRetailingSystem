@@ -11,11 +11,12 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * @author: jiaxing liu
- * @Date: 2019/5/18 12:37
+ * Date: 2019/5/18 12:37
+ *
+ * @author jiaxing liu
  */
 public class TeaAndCoffee15OffStrategyTest {
     private TeaAndCoffee15OffStrategy obj;
@@ -33,22 +34,21 @@ public class TeaAndCoffee15OffStrategyTest {
         obj = null;
     }
 
-
     @Test
-    public void testGetDiscountInHKD(){
+    public void testGetDiscountInHKD() {
         assertEquals(obj.getDiscount(getOrder("hkd")).getDiscount(), 9.27, 0.001);
     }
 
     @Test
-    public void testGetDiscountInRMB(){
+    public void testGetDiscountInRMB() {
         assertEquals(obj.getDiscount(getOrder("cny")).getDiscount(), 8.28, 0.001);
     }
 
-    public Order getOrder(String currency){
+    public Order getOrder(String currency) {
         //before discount{rmb:32.6 + 22.6 hkd:36.4 + 25.4}
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 1));
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 3));
-        return TestHelper.getOrder(currency,orderItems);
+        return TestHelper.getOrder(currency, orderItems);
     }
 }

@@ -39,7 +39,7 @@ public class InfoConstant {
 
     public static final String USER_HAS_LOGED_IN = "USER_HAS_LOGED_IN";
     public static final String USERNAME_OR_PASS_ERROR = "USERNAME_OR_PASS_ERROR";
-    public static final String PLEASE_LOGIN= "PLEASE_LOGIN";
+    public static final String PLEASE_LOGIN = "PLEASE_LOGIN";
     public static final String CONS_DOUBLE_ELEVEN = "DISCOUNT_DOUBLE_ELEVEN";
     public static final String CONS_TEA_AND_COFFEE_15_OFF = "DISCOUNT_TEA_AND_COFFEE_15_OFF";
     public static final String CONS_FULL_REDUCTION = "DISCOUNT_FULL_REDUCTION";

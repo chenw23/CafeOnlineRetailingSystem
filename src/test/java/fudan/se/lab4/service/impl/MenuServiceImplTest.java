@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,14 +27,14 @@ public class MenuServiceImplTest {
     }
 
     @Test
-    public void testGetPriceInRMB(){
+    public void testGetPriceInRMB() {
         double rmbPrice = obj.getPrice(InfoConstant.NAME_CNY, InfoConstant.NAME_CAPPUCCINO);
-        assertEquals(rmbPrice,22,0.001);
+        assertEquals(rmbPrice, 22, 0.001);
     }
 
     @Test
-    public void testGetPriceInHKD(){
-        double hkdPrice = obj.getPrice(InfoConstant.NAME_HKD,InfoConstant.NAME_CAPPUCCINO);
-        assertEquals(hkdPrice,25,0.001);
+    public void testGetPriceInHKD() {
+        double hkdPrice = obj.getPrice(InfoConstant.NAME_HKD, InfoConstant.NAME_CAPPUCCINO);
+        assertEquals(hkdPrice, 25, 0.001);
     }
 }

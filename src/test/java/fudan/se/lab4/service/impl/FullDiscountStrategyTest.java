@@ -14,17 +14,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * @author: jiaxing liu
- * @Date: 2019/5/18 12:37
+ * Date: 2019/5/18 12:37
+ *
+ * @author jiaxing liu
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FullDiscountStrategyTest {
     private FullDiscountStrategy obj;
     private ArrayList<Ingredient> ingredients;
+
     @Before
     public void setUp() {
         obj = new FullDiscountStrategy();
@@ -37,16 +39,16 @@ public class FullDiscountStrategyTest {
     }
 
     @Test
-    public void testGetDiscountInRMB(){
+    public void testGetDiscountInRMB() {
         assertEquals(obj.getDiscount(getOrder(InfoConstant.NAME_CNY)).getDiscount(), 30.0, 0.01);
     }
 
     @Test
-    public void testGetDiscountInHKD(){
+    public void testGetDiscountInHKD() {
         assertEquals(obj.getDiscount(getOrder(InfoConstant.NAME_HKD)).getDiscount(), 60.0, 0.01);
     }
 
-    private Order getOrder(String currency){
+    private Order getOrder(String currency) {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 1));
         orderItems.add(new OrderItem(InfoConstant.NAME_ESPRESSO, ingredients, 3));
@@ -55,7 +57,6 @@ public class FullDiscountStrategyTest {
         orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA, ingredients, 1));
         orderItems.add(new OrderItem(InfoConstant.NAME_LATTE, ingredients, 1));
         orderItems.add(new OrderItem(InfoConstant.NAME_COCONUTMILK, ingredients, 1));
-        return TestHelper.getOrder(currency,orderItems);
+        return TestHelper.getOrder(currency, orderItems);
     }
-
 }

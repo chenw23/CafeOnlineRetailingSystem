@@ -9,22 +9,25 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- * @author: jiaxing liu
- * @Date: 2019/5/18 12:44
+ * Date: 2019/5/18 12:44
+ *
+ * @author jiaxing liu
  */
 public class TestHelper {
 
     /**
      * offer a new order with a random ID
+     *
      * @return a new order with an id generated with the date
      */
-    public static Order getOrder(String currency,ArrayList<OrderItem> orderItems) {
+    public static Order getOrder(String currency, ArrayList<OrderItem> orderItems) {
         String orderID = "" + Calendar.getInstance().getTimeInMillis();
-        return new Order(orderID,currency,orderItems);
+        return new Order(orderID, currency, orderItems);
     }
 
     /**
      * offer an array list of some ingredients
+     *
      * @return a easy array list of ingredient
      */
     public static ArrayList<Ingredient> getIngredients() {
@@ -36,5 +39,4 @@ public class TestHelper {
         ingredients.add(new Ingredient(InfoConstant.NAME_CREAM, 1));
         return ingredients;
     }
-
 }

@@ -13,7 +13,6 @@ public class UserRepositoryImpl {
         FileUtil.write(objectToStringArray(user), FileConstant.USER_CSV);
     }
 
-
     public User getUser(String name) {
         return stringArrayToObject(FileUtil.readByName(name, FileConstant.USER_CSV));
     }

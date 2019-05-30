@@ -16,11 +16,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * @author: jiaxing liu
- * @Date: 2019/5/17 12:30
+ * Date: 2019/5/17 12:30
+ *
+ * @author jiaxing liu
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -38,35 +39,35 @@ public class DoubleElevenStrategyTest {
     }
 
     @Test
-    public void testGetDiscountInRMB(){
+    public void testGetDiscountInRMB() {
         //The test is ugly. When the date is 11-11, the strategy is ok.
-        if(isDoubleEleven()){
-            assertEquals(14.2,obj.getDiscount(getOrder(InfoConstant.NAME_CNY)).getDiscount(),0.001);
-        }else{
-            assertEquals(0,obj.getDiscount(getOrder(InfoConstant.NAME_CNY)).getDiscount(),0.001);
+        if (isDoubleEleven()) {
+            assertEquals(14.2, obj.getDiscount(getOrder(InfoConstant.NAME_CNY)).getDiscount(), 0.001);
+        } else {
+            assertEquals(0, obj.getDiscount(getOrder(InfoConstant.NAME_CNY)).getDiscount(), 0.001);
         }
     }
 
     @Test
-    public void testGetDiscountInHKD(){
+    public void testGetDiscountInHKD() {
         //The test is ugly. When the date is 11-11, the strategy is ok.
-        if(isDoubleEleven()){
-            assertEquals(15.9,obj.getDiscount(getOrder(InfoConstant.NAME_HKD)).getDiscount(),0.001);
-        }else{
-            assertEquals(0,obj.getDiscount(getOrder(InfoConstant.NAME_HKD)).getDiscount(),0.001);
+        if (isDoubleEleven()) {
+            assertEquals(15.9, obj.getDiscount(getOrder(InfoConstant.NAME_HKD)).getDiscount(), 0.001);
+        } else {
+            assertEquals(0, obj.getDiscount(getOrder(InfoConstant.NAME_HKD)).getDiscount(), 0.001);
         }
     }
 
-    public Order getOrder(String currency){
+    public Order getOrder(String currency) {
         //before discount:{rmb:28.4 hkd:31.8}
         ArrayList<Ingredient> ingredients = new ArrayList<>();
-        ingredients.add(new Ingredient(InfoConstant.NAME_MILK,2));
+        ingredients.add(new Ingredient(InfoConstant.NAME_MILK, 2));
         ArrayList<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO,ingredients,2));
-        return TestHelper.getOrder(currency,orderItems);
+        orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 2));
+        return TestHelper.getOrder(currency, orderItems);
     }
 
-    public boolean isDoubleEleven(){
+    public boolean isDoubleEleven() {
         Date dt = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
         return "11-11".equals(sdf.format(dt));

@@ -2,7 +2,6 @@ package fudan.se.lab4.service.impl;
 
 import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.dto.Ingredient;
-import fudan.se.lab4.dto.Order;
 import fudan.se.lab4.dto.OrderItem;
 import fudan.se.lab4.dto.PaymentInfo;
 import fudan.se.lab4.service.MarketingStrategy;
@@ -12,7 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,6 +18,7 @@ public class OrderServiceImplTest {
     private ArrayList<Ingredient> ingredients;
     private OrderServiceImpl orderService;
     private String defaultCurr;
+
     @Before
     public void setUp() {
         defaultCurr = InfoConstant.NAME_CNY;
@@ -58,7 +57,7 @@ public class OrderServiceImplTest {
     @Test
     public void testPayWithOrderItemsNull() {
         try {
-            orderService.pay(TestHelper.getOrder(defaultCurr,null));
+            orderService.pay(TestHelper.getOrder(defaultCurr, null));
         } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.ORDER_ITEMS_NULL);
         }
@@ -72,7 +71,7 @@ public class OrderServiceImplTest {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 2));
         try {
-            orderService.pay(TestHelper.getOrder(null,orderItems));
+            orderService.pay(TestHelper.getOrder(null, orderItems));
         } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.CURRENCY_ERROR);
         }
@@ -87,7 +86,7 @@ public class OrderServiceImplTest {
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 2));
         orderItems.add(null);
         try {
-            orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+            orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.ORDER_ITEM_NULL);
         }
@@ -101,7 +100,7 @@ public class OrderServiceImplTest {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, null, 2));
         try {
-            orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+            orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.INGREDIENTS_NULL);
         }
@@ -118,7 +117,7 @@ public class OrderServiceImplTest {
         ingredients.add(null);
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 2));
         try {
-            orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+            orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.INGREDIENT_NULL);
         }
@@ -134,7 +133,7 @@ public class OrderServiceImplTest {
         ingredients.add(new Ingredient(InfoConstant.NAME_SUGAR, -1));
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 2));
         try {
-            orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+            orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.INGREDIENT_NUMBER_ERROR);
         }
@@ -151,7 +150,7 @@ public class OrderServiceImplTest {
         ingredients.add(new Ingredient(null, 2));
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 2));
         try {
-            orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+            orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.MENUITEM_ERROR);
         }
@@ -168,7 +167,7 @@ public class OrderServiceImplTest {
         ingredients.add(new Ingredient("OtherName", 2));
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 2));
         try {
-            orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+            orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         } catch (AssertionError e) {
             assertEquals(e.getMessage(), InfoConstant.MENUITEM_ERROR);
         }
@@ -185,7 +184,7 @@ public class OrderServiceImplTest {
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 3));
         orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA, ingredients, 3));
         orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA, ingredients, 1));
-        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         assertEquals(paymentInfo.getDiscount(), 30.0, 0.01);
     }
 
@@ -197,7 +196,7 @@ public class OrderServiceImplTest {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 3));
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 3));
-        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         assertEquals(paymentInfo.getDiscount(), 11.0, 0.01);
     }
 
@@ -211,7 +210,7 @@ public class OrderServiceImplTest {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 3));
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 1));
-        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         assertEquals(paymentInfo.getDiscount(), 11.0, 0.01);
     }
 
@@ -226,7 +225,7 @@ public class OrderServiceImplTest {
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 1));
         orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA, ingredients, 1));
         orderItems.add(new OrderItem(InfoConstant.NAME_REDTEA, ingredients, 1));
-        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         assertEquals(paymentInfo.getDiscount(), 18.0, 0.01);
     }
 
@@ -239,8 +238,7 @@ public class OrderServiceImplTest {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem(InfoConstant.NAME_GREENTEA, ingredients, 1));
         orderItems.add(new OrderItem(InfoConstant.NAME_CAPPUCCINO, ingredients, 3));
-        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr,orderItems));
+        PaymentInfo paymentInfo = orderService.pay(TestHelper.getOrder(defaultCurr, orderItems));
         assertEquals(paymentInfo.getDiscount(), 8.28, 0.01);
     }
-
 }

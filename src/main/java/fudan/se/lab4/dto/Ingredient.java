@@ -19,10 +19,10 @@ import java.io.Serializable;
 public class Ingredient implements Serializable {
     private static final long serialVersionUID = 7600387145905184435L;
 
-    @ApiModelProperty(notes="order item name",required = true,dataType = "String")
+    @ApiModelProperty(notes = "order item name", required = true, dataType = "String")
     private String name;
 
-    @ApiModelProperty(notes="ingredient number",required = true,dataType = "int")
+    @ApiModelProperty(notes = "ingredient number", required = true, dataType = "int")
     private int number;
 
     public Ingredient(String name, int number) {

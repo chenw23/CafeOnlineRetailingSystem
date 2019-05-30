@@ -5,7 +5,6 @@ import fudan.se.lab4.dto.PaymentInfo;
 
 public interface OrderService {
     /**
-     *
      * @param order the order
      * @return the information of payment.
      */
