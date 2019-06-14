@@ -13,8 +13,11 @@ public class UIConstant_cn {
     public static final String DISCOUNT_DOUBLE_ELEVEN = "双十一所有商品打五折,折扣 %f";
     public static final String DISCOUNT_TEA = "茶买3送1，折扣 %f";
     public static final String DISCOUNT_CAPPUCCINO = "卡布奇诺第二杯半价，折扣 %f";
-    public static final String DISCOUNT_TEA_AND_COFFEE_15_OFF = "订单中包含至少一件茶类商品或至少一件咖啡类商品打85折,折扣 %f";
+    public static final String DISCOUNT_TEA_AND_COFFEE_15_OFF = "订单中同时包含一件茶类商品和至一件咖啡类商品打85折,折扣 %f";
     public static final String DISCOUNT_ESPRESSO = "大杯浓缩咖啡2杯8折，折扣 %f";
 
+//    public static final String CAPPUCCINO_DESCRIPTION = "An espresso-based coffee drink traditionally prepared with steamed milk foam (microfoam)";
+//    public static final String Espresso_DESCRIPTION = "Brewed by expressing or forcing a small amount of nearly boiling water under pressure through finely ground coffee beans.";
+//    public static final String GREENTEA_DESCRIPTION = "Tea made from Camellia sinensis leaves";
 
 }

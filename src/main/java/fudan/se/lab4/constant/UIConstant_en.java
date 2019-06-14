@@ -14,5 +14,5 @@ public class UIConstant_en {
     public static final String DISCOUNT_ESPRESSO = "Large-cup Espresso 2 cups 20%% off，discount %f";
     public static final String DISCOUNT_FULL_REDUCTION = "All drinks full 100 minus 30, discount %f";
     public static final String DISCOUNT_DOUBLE_ELEVEN = "Double Eleven all drinks 50%% off, discount %f";
-    public static final String DISCOUNT_TEA_AND_COFFEE_15_OFF = "Order including at least one tea or coffee 15%%, discount %f";//订单中包含至少一件茶类商品或至少一件咖啡类商品打85折
+    public static final String DISCOUNT_TEA_AND_COFFEE_15_OFF = "Order including at least one tea and at least one coffee 15%%, discount %f";//订单中包含至少一件茶类商品或至少一件咖啡类商品打85折
 }

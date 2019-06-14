@@ -2,6 +2,7 @@ package fudan.se.lab4.service.impl;
 
 import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.dto.Order;
+import fudan.se.lab4.dto.OrderItem;
 import fudan.se.lab4.dto.PaymentInfo;
 import fudan.se.lab4.service.MarketingStrategy;
 
@@ -9,8 +10,8 @@ import java.util.ArrayList;
 
 public class CombinationDiscountStrategy implements MarketingStrategy {
     private ArrayList<String> msgs;
-    LanguageServiceImpl languageService;
-    MenuServiceImpl menuService;
+    private LanguageServiceImpl languageService;
+    private MenuServiceImpl menuService;
 
     /**
      * @param order the order contains the items purchased
@@ -24,7 +25,7 @@ public class CombinationDiscountStrategy implements MarketingStrategy {
 
         double totalPrice = order.totalPrice();
         double discount = discountOfLargeEspresso(order, msgs) + discountOfTea(order, msgs)
-                + discountOfCappuccino(order, msgs);
+                + discountOfCappuccino(order, msgs) + discountOfTeaAndCoffee(order,msgs);
         return new PaymentInfo(totalPrice, discount, totalPrice - discount, msgs);
     }
 
@@ -102,4 +103,39 @@ public class CombinationDiscountStrategy implements MarketingStrategy {
             msgs.add(String.format(languageService.getValue(InfoConstant.CONS_CAPPUCCINO), discount));
         return discount;
     }
+
+    /**
+     * 15% off for both coffee and tea
+     *
+     * @param order the order contains the items purchased
+     * @return the discount for Cappuccino
+     */
+    private double discountOfTeaAndCoffee(Order order,ArrayList<String> msgs){
+        boolean hasTea = false;
+        boolean hasCoffee = false;
+        double discount = 0;
+        for (OrderItem orderItem:order.getOrderItems()) {
+            if(orderItem.getName().equals(InfoConstant.NAME_GREENTEA)
+            || orderItem.getName().equals(InfoConstant.NAME_REDTEA)){
+                hasTea = true;
+            }
+            if(orderItem.getName().equals(InfoConstant.NAME_ESPRESSO)
+                    || orderItem.getName().equals(InfoConstant.NAME_CAPPUCCINO)){
+                hasCoffee = true;
+            }
+        }
+        if(hasCoffee && hasTea){
+            discount = order.totalPrice() * 0.15;
+            msgs.add(String.format(languageService.getValue(InfoConstant.CONS_TEA_AND_COFFEE_15_OFF), discount));
+        }
+        return discount;
+
+    }
+
+
+
+
+
+
+
 }
