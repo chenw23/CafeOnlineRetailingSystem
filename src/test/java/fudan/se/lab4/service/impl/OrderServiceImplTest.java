@@ -4,8 +4,8 @@ import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.dto.Ingredient;
 import fudan.se.lab4.dto.OrderItem;
 import fudan.se.lab4.dto.PaymentInfo;
-import fudan.se.lab4.service.MarketingStrategy;
 import fudan.se.lab4.service.TestHelper;
+import fudan.se.lab4.util.MarketingStrategyUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,12 +24,7 @@ public class OrderServiceImplTest {
         defaultCurr = InfoConstant.NAME_CNY;
         ingredients = TestHelper.getIngredients();
         orderService = new OrderServiceImpl();
-        ArrayList<MarketingStrategy> strategies = new ArrayList<>();
-        strategies.add(new TeaAndCoffee15OffStrategy());
-        strategies.add(new DoubleElevenStrategy());
-        strategies.add(new FullDiscountStrategy());
-        strategies.add(new CombinationDiscountStrategy());
-        orderService.setStrategies(strategies);
+        orderService.setStrategies(MarketingStrategyUtil.getStrategies());
     }
 
     @After

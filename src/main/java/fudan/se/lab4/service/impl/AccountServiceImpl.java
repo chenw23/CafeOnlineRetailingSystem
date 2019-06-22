@@ -4,7 +4,7 @@ import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.entity.User;
 import fudan.se.lab4.repository.impl.UserRepositoryImpl;
 import fudan.se.lab4.service.AccountService;
-import fudan.se.lab4.util.FileUtil;
+import fudan.se.lab4.util.LogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ import java.text.MessageFormat;
  * @author Wang, Chen
  */
 public class AccountServiceImpl implements AccountService {
-    private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
+    private static Logger logger = LoggerFactory.getLogger("file");
     private static boolean loginStatus = false;
     private UserRepositoryImpl userRepository = new UserRepositoryImpl();
     private LanguageServiceImpl languageService = LanguageServiceImpl.getInstance();
@@ -43,7 +43,8 @@ public class AccountServiceImpl implements AccountService {
             return true;
         } else {
             logger.info(InfoConstant.USER_LOGIN_FAILED);
-            throw new RuntimeException(InfoConstant.USERNAME_OR_PASS_ERROR);
+            LogUtil.LogError(InfoConstant.USERNAME_OR_PASS_ERROR);
+            return false;
         }
     }
 
@@ -73,6 +74,7 @@ public class AccountServiceImpl implements AccountService {
         //username already exist
         String userAlreadyExistStr = MessageFormat.format(InfoConstant.USER_ALREADY_EXIST, user.getName());
         logger.info(userAlreadyExistStr);
+        LogUtil.LogError(userAlreadyExistStr);
         return false;
     }
 

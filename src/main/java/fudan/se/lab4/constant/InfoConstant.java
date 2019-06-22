@@ -49,6 +49,7 @@ public class InfoConstant {
 
     public static final String NAME_CNY = "cny";
     public static final String NAME_HKD = "hkd";
+    public static final String NAME_USD = "usd";
     public static final String NAME_ESPRESSO = "Espresso";
     public static final String NAME_REDTEA = "RedTea";
     public static final String NAME_GREENTEA = "GreenTea";

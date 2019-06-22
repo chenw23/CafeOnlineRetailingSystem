@@ -58,6 +58,16 @@ public class DoubleElevenStrategyTest {
         }
     }
 
+    @Test
+    public void testGetDiscountInUSD() {
+        //The test is ugly. When the date is 11-11, the strategy is ok.
+        if (isDoubleEleven()) {
+            assertEquals(4.2, obj.getDiscount(getOrder(InfoConstant.NAME_USD)).getDiscount(), 0.001);
+        } else {
+            assertEquals(0, obj.getDiscount(getOrder(InfoConstant.NAME_USD)).getDiscount(), 0.001);
+        }
+    }
+
     public Order getOrder(String currency) {
         //before discount:{rmb:28.4 hkd:31.8}
         ArrayList<Ingredient> ingredients = new ArrayList<>();

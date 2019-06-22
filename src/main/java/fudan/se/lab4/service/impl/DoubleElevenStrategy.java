@@ -6,8 +6,6 @@ import fudan.se.lab4.dto.PaymentInfo;
 import fudan.se.lab4.service.MarketingStrategy;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class DoubleElevenStrategy implements MarketingStrategy {
 
@@ -18,10 +16,8 @@ public class DoubleElevenStrategy implements MarketingStrategy {
      */
     private boolean isValid() {
         String date = SystemInfo.getInstance().getDate();
-        String pattern = "\\d{4}-11-11.";
-        Pattern r = Pattern.compile(pattern);
-        Matcher m = r.matcher(date);
-        return m.matches();
+        String MMDD = date.substring(5,10);
+        return "11-11".equals(MMDD);
     }
 
     /**

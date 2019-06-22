@@ -5,14 +5,15 @@ import fudan.se.lab4.dto.Order;
 import fudan.se.lab4.dto.PaymentInfo;
 import fudan.se.lab4.service.MarketingStrategy;
 import fudan.se.lab4.service.OrderService;
+import fudan.se.lab4.util.LogUtil;
 import org.springframework.stereotype.Service;
+import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 
 @Service
 public class OrderServiceImpl implements OrderService {
     private ArrayList<MarketingStrategy> strategies = new ArrayList<>();
-
     /**
      * @param order the order contains the items purchased
      * @return the payment information
@@ -20,7 +21,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public PaymentInfo pay(Order order) {
         checkNull(order);
-
         if (strategies.size() == 0) {
             ArrayList<String> msg = new ArrayList<>();
             msg.add("");
@@ -36,6 +36,7 @@ public class OrderServiceImpl implements OrderService {
                 best = paymentInfo;
             }
         }
+        LogUtil.LogSuccess(best, order.getId());
         return best;
     }
 
@@ -44,7 +45,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private void checkNull(Order order) {
+        if (order==null) {
+            LogUtil.LogError(InfoConstant.ORDER_NULL);
+        }
         assert order != null : InfoConstant.ORDER_NULL;
+        if (order.getOrderItems() == null) {
+            LogUtil.LogError(InfoConstant.ORDER_ITEMS_NULL, order.getId());
+        }
         assert order.getOrderItems() != null : InfoConstant.ORDER_ITEMS_NULL;
     }
+
 }

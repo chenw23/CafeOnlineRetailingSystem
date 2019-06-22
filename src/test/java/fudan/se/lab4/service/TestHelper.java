@@ -21,8 +21,7 @@ public class TestHelper {
      * @return a new order with an id generated with the date
      */
     public static Order getOrder(String currency, ArrayList<OrderItem> orderItems) {
-        String orderID = "" + Calendar.getInstance().getTimeInMillis();
-        return new Order(orderID, currency, orderItems);
+        return new Order(currency, orderItems);
     }
 
     /**

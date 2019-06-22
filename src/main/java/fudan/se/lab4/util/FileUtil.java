@@ -23,6 +23,7 @@ public class FileUtil {
             return true;
         } else {
             if (destFileName.endsWith(File.separator)) {
+                LogUtil.LogError(MessageFormat.format(InfoConstant.FILE_CANNOT_BE_DIR, destFileName));
                 throw new RuntimeException(MessageFormat.format(InfoConstant.FILE_CANNOT_BE_DIR, destFileName));
             }
             // file exists?
@@ -30,6 +31,7 @@ public class FileUtil {
                 //if the parent dir is not exist, then create it.
                 logger.info(InfoConstant.CREATING_PARENT_DIR);
                 if (!file.getParentFile().mkdirs()) {
+                    LogUtil.LogError(InfoConstant.FAILED_CREAT_DIR);
                     throw new RuntimeException(InfoConstant.FAILED_CREAT_DIR);
                 }
             }
@@ -39,10 +41,13 @@ public class FileUtil {
                     logger.info(InfoConstant.SUCCESS_TO_CREATE_FILE, destFileName);
                     return true;
                 } else {
+                    LogUtil.LogError(MessageFormat.format(InfoConstant.FAILED_TO_CREATE_FILE, destFileName));
                     throw new RuntimeException(MessageFormat.format(InfoConstant.FAILED_TO_CREATE_FILE, destFileName));
                 }
             } catch (IOException e) {
                 logger.info(e.getMessage());
+                LogUtil.LogError(MessageFormat.format(InfoConstant.FAILED_TO_CREATE_FILE_REASON, destFileName,
+                        e.getMessage()));
                 throw new RuntimeException(MessageFormat.format(InfoConstant.FAILED_TO_CREATE_FILE_REASON, destFileName,
                         e.getMessage()));
             }

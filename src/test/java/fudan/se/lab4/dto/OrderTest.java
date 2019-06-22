@@ -81,8 +81,7 @@ public class OrderTest {
      * @return a new order with an id generted with the date
      */
     private Order getOrder(ArrayList<OrderItem> orderItems) {
-        String orderID = "" + Calendar.getInstance().getTimeInMillis();
-        String currency = "rmb";
-        return new Order(orderID, currency, orderItems);
+        String currency = "cny";
+        return new Order(currency, orderItems);
     }
 }

@@ -4,6 +4,7 @@ import fudan.se.lab4.constant.FileConstant;
 import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.service.MenuService;
 import fudan.se.lab4.util.FileUtil;
+import fudan.se.lab4.util.LogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +18,6 @@ import java.util.Properties;
 public class MenuServiceImpl implements MenuService {
 
     private static Map<String, Map<String, Double>> menu = new HashMap<>();
-    private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
     private static MenuServiceImpl obj = new MenuServiceImpl();
 
@@ -34,14 +34,14 @@ public class MenuServiceImpl implements MenuService {
                 try {
                     properties.load(inputStream);
                 } catch (IOException e) {
-                    logger.info(MessageFormat.format(InfoConstant.FILE_NOT_FOUND, value));
+                    LogUtil.LogError(MessageFormat.format(InfoConstant.FILE_NOT_FOUND, value));
                 }
                 Map<String, Double> menuItem = new HashMap<>();
                 properties.forEach((ky, val) -> menuItem.put(ky.toString(), Double.parseDouble(val.toString())));
                 menu.put(value.toString(), menuItem);
             });
         } catch (IOException e) {
-            logger.info(MessageFormat.format(InfoConstant.FILE_NOT_FOUND, currPath));
+            LogUtil.LogError(MessageFormat.format(InfoConstant.FILE_NOT_FOUND, currPath));
         }
     }
 

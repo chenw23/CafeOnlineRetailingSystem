@@ -4,6 +4,7 @@ import fudan.se.lab4.constant.FileConstant;
 import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.entity.User;
 import fudan.se.lab4.util.FileUtil;
+import fudan.se.lab4.util.LogUtil;
 
 import java.text.MessageFormat;
 
@@ -20,6 +21,8 @@ public class UserRepositoryImpl {
     private String[] objectToStringArray(User user) {
         // if user already exists, throw exception
         if (FileUtil.exist(user.getName(), FileConstant.USER_CSV)) {
+            LogUtil.LogError(MessageFormat.format(InfoConstant.ENTITY_EXIST, "User",
+                    user.getName()));
             throw new RuntimeException(MessageFormat.format(InfoConstant.ENTITY_EXIST, "User",
                     user.getName()));
         }

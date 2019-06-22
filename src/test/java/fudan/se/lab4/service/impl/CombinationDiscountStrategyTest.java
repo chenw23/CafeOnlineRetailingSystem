@@ -41,12 +41,17 @@ public class CombinationDiscountStrategyTest {
 
     @Test
     public void testGetDiscountInRMB() {
-        assertEquals(obj.getDiscount(getOrder("cny")).getDiscount(), 52.94, 0.001);
+        assertEquals(obj.getDiscount(getOrder(InfoConstant.NAME_CNY)).getDiscount(), 52.94, 0.001);
     }
 
     @Test
     public void testGetDiscountInHKD() {
-        assertEquals(obj.getDiscount(getOrder("hkd")).getDiscount(), 59.25999999999999, 0.001);
+        assertEquals(obj.getDiscount(getOrder(InfoConstant.NAME_HKD)).getDiscount(), 59.259, 0.001);
+    }
+
+    @Test
+    public void testGetDiscountInUSD() {
+        assertEquals(obj.getDiscount(getOrder(InfoConstant.NAME_USD)).getDiscount(), 11.219, 0.001);
     }
 
     public Order getOrder(String currency) {

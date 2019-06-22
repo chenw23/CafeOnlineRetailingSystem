@@ -6,7 +6,7 @@ import java.util.Date;
 public class SystemInfo {
 
     private String position;
-    private static SystemInfo systemInfo;
+    private static SystemInfo systemInfo = new SystemInfo();
 
     private SystemInfo() {
     }
@@ -17,9 +17,6 @@ public class SystemInfo {
      * @return an instance
      */
     public static SystemInfo getInstance() {
-        if (systemInfo == null) {
-            systemInfo = new SystemInfo();
-        }
         return systemInfo;
     }
 

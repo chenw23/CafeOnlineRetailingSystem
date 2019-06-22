@@ -47,6 +47,10 @@ public class FullDiscountStrategyTest {
     public void testGetDiscountInHKD() {
         assertEquals(obj.getDiscount(getOrder(InfoConstant.NAME_HKD)).getDiscount(), 60.0, 0.01);
     }
+    @Test
+    public void testGetDiscountInUSD() {
+        assertEquals(obj.getDiscount(getOrder(InfoConstant.NAME_USD)).getDiscount(), 0.0, 0.01);
+    }
 
     private Order getOrder(String currency) {
         ArrayList<OrderItem> orderItems = new ArrayList<>();

@@ -37,4 +37,10 @@ public class MenuServiceImplTest {
         double hkdPrice = obj.getPrice(InfoConstant.NAME_HKD, InfoConstant.NAME_CAPPUCCINO);
         assertEquals(hkdPrice, 25, 0.001);
     }
+
+    @Test
+    public void testGetPriceInUSD() {
+        double hkdPrice = obj.getPrice(InfoConstant.NAME_USD, InfoConstant.NAME_CAPPUCCINO);
+        assertEquals(hkdPrice, 4, 0.001);
+    }
 }

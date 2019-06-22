@@ -4,6 +4,8 @@ import fudan.se.lab4.constant.FileConstant;
 import fudan.se.lab4.constant.InfoConstant;
 import fudan.se.lab4.service.LanguageService;
 import fudan.se.lab4.util.FileUtil;
+import fudan.se.lab4.util.LogUtil;
+import io.swagger.models.auth.In;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +21,6 @@ public class LanguageServiceImpl implements LanguageService {
 
     private Class languageProvider;
     private static Map<String, String> languageReposity = new HashMap<>();
-    private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
     static {
         InputStream inputStream = MenuServiceImpl.class.getClassLoader().getResourceAsStream("application-language.properties");
@@ -30,11 +31,10 @@ public class LanguageServiceImpl implements LanguageService {
                 properties.forEach((key, value) -> languageReposity.put(key.toString(), value.toString()));
             }
         } catch (IOException e) {
-            logger.info(InfoConstant.FILE_NOT_FOUND);
+            LogUtil.LogError(MessageFormat.format(InfoConstant.FILE_NOT_FOUND,"application-language.properties"));
         }
     }
 
-    private static LanguageServiceImpl obj;
 
 
     /**
@@ -51,17 +51,14 @@ public class LanguageServiceImpl implements LanguageService {
      * @return the special instance.
      */
     public static LanguageServiceImpl getInstance() {
-        if (obj == null) {
-            obj = new LanguageServiceImpl();
-        }
-        return obj;
+        return new LanguageServiceImpl();
     }
 
     public void updateLanguage(String language) {
         try {
             languageProvider = Class.forName(FileConstant.UI_CONSTANT_PATH + languageReposity.get(language));
         } catch (ClassNotFoundException e) {
-            logger.info(MessageFormat.
+            LogUtil.LogError(MessageFormat.
                     format(InfoConstant.CLASS_NOT_FOUND, FileConstant.UI_CONSTANT_PATH + languageReposity.get(language)));
         }
     }
@@ -73,7 +70,7 @@ public class LanguageServiceImpl implements LanguageService {
             Field f = languageProvider.getField(name);
             result = f.get(languageProvider).toString();
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            logger.info(result);
+            LogUtil.LogError(result);
         }
         return result;
     }
