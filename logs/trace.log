@@ -1,0 +1,55 @@
+2019-06-23 01:22:08,229  INFO ordertrace:20 - ID: 1561224128151 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:22:08,244  INFO ordertrace:20 - ID: 1561224128244 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:22:08,260  INFO ordertrace:20 - ID: 1561224128260 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:22:08,260  INFO ordertrace:20 - ID: 1561224128260 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:22:08,276  INFO ordertrace:20 - ID: 1561224128276 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:22:47,512  INFO ordertrace:20 - ID: 1561224167465 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:22:47,512  INFO ordertrace:20 - ID: 1561224167512 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:22:47,527  INFO ordertrace:20 - ID: 1561224167512 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:22:47,527  INFO ordertrace:20 - ID: 1561224167527 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:22:47,527  INFO ordertrace:20 - ID: 1561224167527 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:23:46,920  INFO ordertrace:20 - ID: 1561224226904 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:23:46,935  INFO ordertrace:20 - ID: 1561224226935 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:23:46,935  INFO ordertrace:20 - ID: 1561224226935 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:23:46,951  INFO ordertrace:20 - ID: 1561224226951 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:23:46,951  INFO ordertrace:20 - ID: 1561224226951 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:25:33,594  INFO ordertrace:19 - ID: 1561224333532 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:25:33,610  INFO ordertrace:19 - ID: 1561224333610 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:25:33,625  INFO ordertrace:19 - ID: 1561224333610 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:25:33,625  INFO ordertrace:19 - ID: 1561224333625 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:25:33,641  INFO ordertrace:19 - ID: 1561224333625 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:26:12,186  INFO ordertrace:19 - ID: 1561224372139 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:26:12,202  INFO ordertrace:19 - ID: 1561224372202 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:26:12,202  INFO ordertrace:19 - ID: 1561224372202 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:26:12,218  INFO ordertrace:19 - ID: 1561224372202 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:26:12,218  INFO ordertrace:19 - ID: 1561224372218 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:27:05,866  INFO ordertrace:19 - ID: 1561224425835 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:27:05,882  INFO ordertrace:19 - ID: 1561224425866 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:27:05,882  INFO ordertrace:19 - ID: 1561224425882 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:27:05,882  INFO ordertrace:19 - ID: 1561224425882 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:27:05,897  INFO ordertrace:19 - ID: 1561224425897 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:28:26,653  INFO ordertrace:19 - ID: 1561224506622 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:28:26,668  INFO ordertrace:19 - ID: 1561224506668 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:28:26,668  INFO ordertrace:19 - ID: 1561224506668 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:28:26,684  INFO ordertrace:19 - ID: 1561224506668 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:28:26,684  INFO ordertrace:19 - ID: 1561224506684 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:28:43,811  INFO ordertrace:19 - ID: 1561224523764 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:28:43,827  INFO ordertrace:19 - ID: 1561224523827 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:28:43,827  INFO ordertrace:19 - ID: 1561224523827 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:28:43,842  INFO ordertrace:19 - ID: 1561224523842 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:28:43,842  INFO ordertrace:19 - ID: 1561224523842 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:29:49,446  INFO ordertrace:19 - ID: 1561224589399 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:29:49,446  INFO ordertrace:19 - ID: 1561224589446 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:29:49,462  INFO ordertrace:19 - ID: 1561224589446 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:29:49,462  INFO ordertrace:19 - ID: 1561224589462 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:29:49,478  INFO ordertrace:19 - ID: 1561224589478 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:37:32,165  INFO ordertrace:19 - ID: 1561225052118 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:37:32,180  INFO ordertrace:19 - ID: 1561225052180 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:37:32,196  INFO ordertrace:19 - ID: 1561225052196 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:37:32,196  INFO ordertrace:19 - ID: 1561225052196 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:37:32,211  INFO ordertrace:19 - ID: 1561225052211 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:38:08,603  INFO ordertrace:19 - ID: 1561225088556 The original price is 55.2. The discount price is 46.92. The strategy is Order including at least one tea and at least one coffee 15%, discount 8.280000.
+2019-06-23 01:38:08,603  INFO ordertrace:19 - ID: 1561225088603 The original price is 139.0. The discount price is 109.0. The strategy is All drinks full 100 minus 30, discount 30.000000.
+2019-06-23 01:38:08,618  INFO ordertrace:19 - ID: 1561225088618 The original price is 94.4. The discount price is 76.4. The strategy is Tea buy three send one, discount 18.000000.
+2019-06-23 01:38:08,634  INFO ordertrace:19 - ID: 1561225088618 The original price is 61.2. The discount price is 50.2. The strategy is Cappuccino second half price, discount 11.000000.
+2019-06-23 01:38:08,634  INFO ordertrace:19 - ID: 1561225088634 The original price is 65.2. The discount price is 54.2. The strategy is Cappuccino second half price, discount 11.000000.

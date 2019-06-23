@@ -1,0 +1,24 @@
+2019-06-23 01:32:08,590 ERROR syserror:24 - ID: 1561224728418    Order items are null
+2019-06-23 01:32:08,590 ERROR syserror:24 - ID: 1561224728590    The ingredients are null
+2019-06-23 01:32:56,507 ERROR syserror:28 - USERNAME_OR_PASS_ERROR
+2019-06-23 01:33:41,176 ERROR syserror:28 - USERNAME_OR_PASS_ERROR
+2019-06-23 01:34:22,451 ERROR syserror:28 - USERNAME_OR_PASS_ERROR
+2019-06-23 01:35:18,747 ERROR syserror:28 - USERNAME_OR_PASS_ERROR
+2019-06-23 01:37:32,180 ERROR syserror:24 - ID: 1561225052180    The number of the ingredient is illegal.
+2019-06-23 01:37:32,180 ERROR syserror:24 - ID: 1561225052180    Order items are null
+2019-06-23 01:37:32,180 ERROR syserror:28 - Order is null.
+2019-06-23 01:37:32,180 ERROR syserror:24 - ID: 1561225052180    The menu item is not supported.
+2019-06-23 01:37:32,196 ERROR syserror:24 - ID: 1561225052196    One of the ingredients is null
+2019-06-23 01:37:32,196 ERROR syserror:24 - ID: 1561225052196    The menu item is not supported.
+2019-06-23 01:37:32,196 ERROR syserror:24 - ID: 1561225052196    One of the order items is null
+2019-06-23 01:37:32,196 ERROR syserror:24 - ID: 1561225052196    The currency is not supported.
+2019-06-23 01:37:32,211 ERROR syserror:24 - ID: 1561225052196    The ingredients are null
+2019-06-23 01:38:08,603 ERROR syserror:24 - ID: 1561225088603    The number of the ingredient is illegal.
+2019-06-23 01:38:08,603 ERROR syserror:24 - ID: 1561225088603    Order items are null
+2019-06-23 01:38:08,603 ERROR syserror:28 - Order is null.
+2019-06-23 01:38:08,603 ERROR syserror:24 - ID: 1561225088603    The menu item is not supported.
+2019-06-23 01:38:08,618 ERROR syserror:24 - ID: 1561225088618    One of the ingredients is null
+2019-06-23 01:38:08,618 ERROR syserror:24 - ID: 1561225088618    The menu item is not supported.
+2019-06-23 01:38:08,618 ERROR syserror:24 - ID: 1561225088618    One of the order items is null
+2019-06-23 01:38:08,634 ERROR syserror:24 - ID: 1561225088634    The currency is not supported.
+2019-06-23 01:38:08,634 ERROR syserror:24 - ID: 1561225088634    The ingredients are null
